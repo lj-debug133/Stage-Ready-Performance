@@ -1,0 +1,91 @@
+<!-- Free Consultation Form Section (secure version) -->
+<div id="consultation" class="bg-gray-900/60 p-8 rounded-2xl mt-12 sm:mt-16 scroll-mt-20">
+  <h2 class="text-3xl font-bold text-center mb-2 text-sky-400">Claim Your Free Consultation</h2>
+  <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Take the first step. Fill out the form below, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
+
+  <form id="consult-form" class="max-w-xl mx-auto" novalidate>
+    <!-- Honeypot to trap bots -->
+    <input type="text" name="bot-field" id="bot-field" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label for="consult-name" class="block text-gray-300 mb-2 sr-only">Name</label>
+        <input required type="text" id="consult-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+      </div>
+      <div>
+        <label for="consult-email" class="block text-gray-300 mb-2 sr-only">Email</label>
+        <input required type="email" id="consult-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <label for="consult-message" class="block text-gray-300 mb-2 sr-only">Your Goals</label>
+      <textarea id="consult-message" name="message" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4"></textarea>
+    </div>
+
+    <!-- reCAPTCHA v2 checkbox (replace with your site key) -->
+    <div class="mb-6">
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+    </div>
+
+    <div class="text-center">
+      <button id="consult-submit" type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire Now</button>
+    </div>
+
+    <div id="consult-status" class="mt-4 text-center text-sm text-gray-300"></div>
+  </form>
+
+  <script>
+    document.getElementById('consult-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const statusEl = document.getElementById('consult-status');
+
+      // Basic client validation
+      const name = document.getElementById('consult-name').value.trim();
+      const email = document.getElementById('consult-email').value.trim();
+      const message = document.getElementById('consult-message').value.trim();
+      const botField = document.getElementById('bot-field').value;
+
+      if (!name || !email) {
+        statusEl.textContent = 'Please provide name and email.';
+        return;
+      }
+      // optional: email regex check
+
+      // If honeypot filled, silently stop
+      if (botField) {
+        statusEl.textContent = 'Thanks.';
+        return;
+      }
+
+      // Grab reCAPTCHA response (v2)
+      const recaptchaResponse = grecaptcha && grecaptcha.getResponse ? grecaptcha.getResponse() : null;
+      if (!recaptchaResponse) {
+        statusEl.textContent = 'Please complete the reCAPTCHA.';
+        return;
+      }
+
+      statusEl.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/.netlify/functions/sendForm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message, recaptchaResponse, form: 'consultation' })
+        });
+
+        const payload = await res.json();
+        if (res.ok) {
+          statusEl.textContent = 'Thanks — we received your inquiry and will contact you soon.';
+          this.reset();
+          grecaptcha.reset();
+        } else {
+          statusEl.textContent = payload?.error || 'Submission failed. Try again later.';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error. Try again later.';
+      }
+    });
+  </script>
+</div>
