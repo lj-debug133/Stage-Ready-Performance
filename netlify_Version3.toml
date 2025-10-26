@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  command = ""
+
+# Ensure SPA routes are redirected to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
