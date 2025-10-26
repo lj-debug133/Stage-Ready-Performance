@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage Ready Performance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #111827; color: #F3F4F6; }
+    .nav-link { transition: color 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: #38bdf8; }
+    .cta-button { transition: background-color 0.3s ease, transform 0.3s ease; }
+    .cta-button:hover { background-color: #0c4a6e; transform: translateY(-2px); }
+    .content-section { display: none; }
+    .content-section.active { display: block; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navigation (unchanged) -->
+  <nav class="bg-gray-900/80 sticky top-0 z-50 shadow-lg">
+    <!-- nav content omitted here for brevity (use your existing nav) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- ... -->
+      <a href="#home" class="text-2xl font-bold text-sky-400 nav-link active" data-page="home">Stage Ready Performance</a>
+      <!-- ... -->
+    </div>
+  </nav>
+
+  <main id="main-content" class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+
+    <!-- Home Section (unchanged) -->
+    <section id="home" class="content-section active">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+          Unlock Your <span class="text-sky-400">Peak Performance</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">At Stage Ready Performance, we empower artists and athletes to achieve their highest potential.</p>
+        <a href="#consultation" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg inline-block">Book a Free Consultation</a>
+      </div>
+    </section>
+
+    <!-- Free Consultation Form Section (Netlify Forms) -->
+    <section id="consultation" class="content-section">
+      <div class="bg-gray-900/60 p-8 rounded-2xl mt-12 sm:mt-16 scroll-mt-20">
+        <h2 class="text-3xl font-bold text-center mb-2 text-sky-400">Claim Your Free Consultation</h2>
+        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Fill out the form below and we'll contact you to schedule your free 30-minute session.</p>
+
+        <!-- Netlify form: data-netlify="true" & hidden form-name -->
+        <form name="consultation" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+          <input type="hidden" name="form-name" value="consultation">
+
+          <!-- Honeypot -->
+          <p style="display:none">
+            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="consult-name" class="sr-only">Name</label>
+              <input id="consult-name" name="name" required type="text" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+            </div>
+            <div>
+              <label for="consult-email" class="sr-only">Email</label>
+              <input id="consult-email" name="email" required type="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="consult-message" class="sr-only">Your Goals</label>
+            <textarea id="consult-message" name="message" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4"></textarea>
+          </div>
+
+          <!-- Netlify reCAPTCHA placeholder (Netlify will verify server-side) -->
+          <div class="mb-6" data-netlify-recaptcha="true"></div>
+
+          <div class="text-center">
+            <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire Now</button>
+          </div>
+
+          <p class="mt-4 text-center text-sm text-gray-300">You can also manage submissions in the Netlify dashboard → Forms.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Personal training & contact sections with Netlify forms -->
+    <section id="personal" class="content-section">
+      <div class="bg-gray-900/60 p-8 rounded-2xl mt-16">
+        <h3 class="text-3xl font-bold text-center mb-2 text-sky-400">Inquire About Personal Training</h3>
+
+        <form name="personal" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+          <input type="hidden" name="form-name" value="personal">
+          <p style="display:none"><label>Don’t fill this out if you're human: <input name="bot-field"></label></p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <input id="pt-name" name="name" required placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+            <input id="pt-email" name="email" required type="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+          </div>
+
+          <textarea id="pt-message" name="message" rows="4" placeholder="I'm interested in personal training!" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 mb-6"></textarea>
+
+          <div class="mb-6" data-netlify-recaptcha="true"></div>
+
+          <div class="text-center mt-6">
+            <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Send Inquiry</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <h2 class="text-3xl font-bold text-center mb-8 text-sky-400">Get In Touch</h2>
+
+      <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><label>Don’t fill this out if you're human: <input name="bot-field"></label></p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <input id="contact-name" name="name" required placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+          <input id="contact-email" name="email" required type="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
+        </div>
+
+        <textarea id="contact-message" name="message" rows="4" placeholder="Your Message" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 mb-6"></textarea>
+
+        <div class="mb-6" data-netlify-recaptcha="true"></div>
+
+        <div class="text-center">
+          <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Send Message</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    // SPA navigation script (same behaviour as before)
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const contentSections = document.querySelectorAll('.content-section');
+      const mainContent = document.getElementById('main-content');
+
+      function switchPage(pageId) {
+        contentSections.forEach(section => section.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if (target) target.classList.add('active');
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLinks.forEach(link => { if (link.dataset.page === pageId) link.classList.add('active'); });
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        mainContent.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const pageId = link.dataset.page;
+          switchPage(pageId);
+          history.pushState({ page: pageId }, '', `#${pageId}`);
+        });
+      });
+
+      mobileMenuButton?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+      const initialPage = window.location.hash.substring(1) || 'home';
+      switchPage(initialPage);
+      window.addEventListener('popstate', () => {
+        const pageId = window.location.hash.substring(1) || 'home';
+        switchPage(pageId);
+      });
+    });
+  </script>
+</body>
+</html>
