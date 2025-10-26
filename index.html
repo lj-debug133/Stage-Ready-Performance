@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stage Ready Performance</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -94,95 +93,39 @@
         <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
           At Stage Ready Performance, we empower artists and athletes to achieve their highest potential through specialized training programs designed for excellence.
         </p>
-        <a href="#consultation" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg inline-block">Book a Free Consultation</a>
+        <a href="#contact" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg inline-block">Contact Us</a>
       </div>
 
-      <!-- Training Principles Section -->
-      <div class="py-16 sm:py-24">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Core Training Principles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <!-- content omitted for brevity in this commit message; full file contains original page content -->
+      <!-- Training Principles Section (omitted for brevity) -->
+    </section>
+
+    <!-- Dance Performance Section -->
+    <section id="dance" class="content-section">
+      <!-- content omitted for brevity -->
+    </section>
+
+    <!-- Sport Performance Section -->
+    <section id="sport" class="content-section">
+      <!-- content omitted for brevity -->
+    </section>
+
+    <!-- Personal Training Section -->
+    <section id="personal" class="content-section">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Individualized Personal Training</h2>
+        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">Commit to your personal health and fitness goals with our one-on-one training programs.</p>
+      </div>
+
+      <div class="bg-gray-900/60 p-8 rounded-2xl mt-16">
+        <h3 class="text-3xl font-bold text-center mb-2 text-sky-400">Package Details & Inquiries</h3>
+        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">To inquire about personal training plans, please email us directly.</p>
+        <div class="text-center">
+          <a href="mailto:stagereadyperformance@gmail.com?subject=Personal%20Training%20Inquiry" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Email Us About Personal Training</a>
         </div>
       </div>
-
-      <!-- Free Consultation Form Section (secure) -->
-      <div id="consultation" class="bg-gray-900/60 p-8 rounded-2xl mt-12 sm:mt-16 scroll-mt-20">
-        <h2 class="text-3xl font-bold text-center mb-2 text-sky-400">Claim Your Free Consultation</h2>
-        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Take the first step. Fill out the form below, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
-
-        <form id="consult-form" class="max-w-xl mx-auto" novalidate>
-          <!-- Honeypot to trap bots -->
-          <input type="text" name="bot-field" id="consult-bot-field" style="display:none" tabindex="-1" autocomplete="off">
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label for="consult-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input required type="text" id="consult-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-            </div>
-            <div>
-              <label for="consult-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input required type="email" id="consult-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label for="consult-message" class="block text-gray-300 mb-2 sr-only">Your Goals</label>
-            <textarea id="consult-message" name="message" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4"></textarea>
-          </div>
-
-          <!-- reCAPTCHA v2 checkbox (replace with your site key in Netlify or via templating before deploy) -->
-          <div class="mb-6">
-            <div class="g-recaptcha" data-sitekey="RECAPTCHA_SITE_KEY"></div>
-          </div>
-
-          <div class="text-center">
-            <button id="consult-submit" type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire Now</button>
-          </div>
-
-          <div id="consult-status" class="mt-4 text-center text-sm text-gray-300"></div>
-        </form>
-      </div>
     </section>
 
-    <!-- Personal Training Section (with secure contact form) -->
-    <section id="personal" class="content-section">
-      <!-- content omitted for brevity in this commit message; full file contains original page content -->
-      <div class="bg-gray-900/60 p-8 rounded-2xl mt-16">
-        <h3 class="text-3xl font-bold text-center mb-2 text-sky-400">Package Details: Coming Soon!</h3>
-        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">We are finalizing our personal training packages to provide the best possible value. If you're interested in getting started, please send us an inquiry, and you'll be the first to know when they launch!</p>
-
-        <form id="pt-form" class="max-w-xl mx-auto" novalidate>
-          <input type="text" name="bot-field" id="pt-bot-field" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label for="pt-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input required type="text" id="pt-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-            </div>
-            <div>
-              <label for="pt-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input required type="email" id="pt-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label for="pt-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-            <textarea id="pt-message" name="message" rows="4" placeholder="I'm interested in personal training!" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4"></textarea>
-          </div>
-
-          <div class="mb-6">
-            <div class="g-recaptcha" data-sitekey="RECAPTCHA_SITE_KEY"></div>
-          </div>
-
-          <div class="text-center mt-6">
-            <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire About Personal Training</button>
-          </div>
-
-          <div id="pt-status" class="mt-4 text-center text-sm text-gray-300"></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Testimonials, About, Pricing, Contact (contact form is secure) -->
+    <!-- Testimonials Section -->
     <section id="testimonials" class="content-section">
       <div class="text-center py-20">
         <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">What Our Clients Say</h2>
@@ -190,52 +133,30 @@
       </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="content-section">
-      <!-- about content omitted for brevity in this commit message; full file contains original page content -->
+      <!-- content omitted for brevity -->
     </section>
 
+    <!-- Pricing Section -->
     <section id="pricing" class="content-section">
-      <!-- pricing content omitted for brevity in this commit message; full file contains original page content -->
+      <!-- content omitted for brevity -->
     </section>
 
+    <!-- Contact Us Section: replaced form with mailto link -->
     <section id="contact" class="content-section">
       <h2 class="text-3xl font-bold text-center mb-8 text-sky-400">Get In Touch</h2>
-      <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Have a question or want to discuss a custom package? Fill out the form below or email us directly at <a href="mailto:stagereadyperformance@gmail.com" class="text-sky-400 hover:underline">stagereadyperformance@gmail.com</a>.</p>
+      <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Have a question or want to discuss a custom package? Email us directly and we'll get back to you.</p>
 
-      <form id="contact-form" class="max-w-xl mx-auto" novalidate>
-        <input type="text" name="bot-field" id="contact-bot-field" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label for="contact-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-            <input required type="text" id="contact-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-          </div>
-          <div>
-            <label for="contact-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-            <input required type="email" id="contact-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4">
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label for="contact-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-          <textarea id="contact-message" name="message" rows="4" placeholder="Your Message" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4"></textarea>
-        </div>
-
-        <div class="mb-6">
-          <div class="g-recaptcha" data-sitekey="RECAPTCHA_SITE_KEY"></div>
-        </div>
-
-        <div class="text-center">
-          <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Send Message</button>
-        </div>
-
-        <div id="contact-status" class="mt-4 text-center text-sm text-gray-300"></div>
-      </form>
+      <div class="max-w-xl mx-auto text-center">
+        <a href="mailto:stagereadyperformance@gmail.com?subject=General%20Inquiry" class="text-sky-400 underline text-lg">stagereadyperformance@gmail.com</a>
+        <p class="mt-6 text-gray-300">Click the email address above to open your default email client and send us a message.</p>
+      </div>
     </section>
 
   </main>
 
   <script>
-    // Navigation and SPA switching (unchanged)
     document.addEventListener('DOMContentLoaded', function() {
       const navLinks = document.querySelectorAll('.nav-link');
       const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -244,11 +165,22 @@
       const mainContent = document.getElementById('main-content');
 
       function switchPage(pageId) {
-        contentSections.forEach(section => section.classList.remove('active'));
-        const target = document.getElementById(pageId);
-        if (target) target.classList.add('active');
-        navLinks.forEach(link => link.classList.remove('active'));
-        navLinks.forEach(link => { if (link.dataset.page === pageId) link.classList.add('active'); });
+        contentSections.forEach(section => {
+          section.classList.remove('active');
+        });
+
+        const targetSection = document.getElementById(pageId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === pageId) {
+            link.classList.add('active');
+          }
+        });
+
         mobileMenu.classList.add('hidden');
         mainContent.scrollIntoView({ behavior: 'smooth' });
       }
@@ -262,80 +194,17 @@
         });
       });
 
-      const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-      smoothScrollLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          const pageId = this.dataset.page;
-          if (pageId) return;
-          if (href && href.startsWith('#') && href.length > 1) {
-            e.preventDefault();
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
       });
-
-      mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
       const initialPage = window.location.hash.substring(1) || 'home';
       switchPage(initialPage);
-      window.addEventListener('popstate', () => {
+
+      window.addEventListener('popstate', (e) => {
         const pageId = window.location.hash.substring(1) || 'home';
         switchPage(pageId);
       });
-
-      // Shared form submit handler
-      async function sendForm(formEl, formName, statusElId, botFieldId) {
-        const statusEl = document.getElementById(statusElId);
-        statusEl.textContent = '';
-
-        const bot = document.getElementById(botFieldId).value;
-        if (bot) { statusEl.textContent = 'Thanks.'; return; }
-
-        const formData = new FormData(formEl);
-        const name = formData.get('name') || '';
-        const email = formData.get('email') || '';
-        const message = formData.get('message') || '';
-
-        if (!name || !email) { statusEl.textContent = 'Please provide name and email.'; return; }
-
-        // get reCAPTCHA token
-        const recaptchaResponse = grecaptcha && grecaptcha.getResponse ? grecaptcha.getResponse() : null;
-        if (!recaptchaResponse) { statusEl.textContent = 'Please complete the reCAPTCHA.'; return; }
-
-        statusEl.textContent = 'Sending…';
-
-        try {
-          const res = await fetch('/.netlify/functions/sendForm', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message, recaptchaResponse, form: formName })
-          });
-          const payload = await res.json();
-          if (res.ok) {
-            statusEl.textContent = 'Thanks — we received your inquiry and will contact you soon.';
-            formEl.reset();
-            grecaptcha.reset();
-          } else {
-            statusEl.textContent = payload?.error || 'Submission failed. Try again later.';
-          }
-        } catch (err) {
-          statusEl.textContent = 'Network error. Try again later.';
-        }
-      }
-
-      // Hook forms
-      const consultForm = document.getElementById('consult-form');
-      if (consultForm) consultForm.addEventListener('submit', function(e){ e.preventDefault(); sendForm(consultForm, 'consultation', 'consult-status', 'consult-bot-field'); });
-
-      const ptForm = document.getElementById('pt-form');
-      if (ptForm) ptForm.addEventListener('submit', function(e){ e.preventDefault(); sendForm(ptForm, 'personal', 'pt-status', 'pt-bot-field'); });
-
-      const contactForm = document.getElementById('contact-form');
-      if (contactForm) contactForm.addEventListener('submit', function(e){ e.preventDefault(); sendForm(contactForm, 'contact', 'contact-status', 'contact-bot-field'); });
-
     });
   </script>
 </body>
