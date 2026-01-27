@@ -175,22 +175,26 @@
         <h2 class="text-3xl font-bold text-center mb-2 text-sky-400">Claim Your Free Consultation</h2>
         <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Take the first step. Fill out the form below, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
 
-        <form action="mailto:stagereadyperformance@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto">
+        <form name="consultation" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+          <input type="hidden" name="form-name" value="consultation">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label for="consult-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input type="text" id="consult-name" name="Name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+              <input required type="text" id="consult-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
             </div>
             <div>
               <label for="consult-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input type="email" id="consult-email" name="Email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+              <input required type="email" id="consult-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
             </div>
           </div>
 
           <div class="mb-6">
             <label for="consult-message" class="block text-gray-300 mb-2 sr-only">Your Goals</label>
-            <textarea id="consult-message" name="Goals" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
+            <textarea id="consult-message" name="message" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
           </div>
+
+          <div data-netlify-recaptcha="true"></div>
 
           <div class="text-center">
             <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire Now</button>
@@ -419,22 +423,26 @@
         <h3 class="text-3xl font-bold text-center mb-2 text-sky-400">Package Details: Coming Soon!</h3>
         <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">We are finalizing our personal training packages to provide the best possible value. If you're interested in getting started, please send us an inquiry, and you'll be the first to know when they launch!</p>
 
-        <form action="mailto:stagereadyperformance@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto">
+        <form name="personal-training" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+          <input type="hidden" name="form-name" value="personal-training">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label for="pt-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input type="text" id="pt-name" name="Name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+              <input required type="text" id="pt-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
             </div>
             <div>
               <label for="pt-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input type="email" id="pt-email" name="Email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+              <input required type="email" id="pt-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
             </div>
           </div>
 
           <div class="mb-6">
             <label for="pt-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-            <textarea id="pt-message" name="Message" rows="4" placeholder="I'm interested in personal training!" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
+            <textarea id="pt-message" name="message" rows="4" placeholder="I'm interested in personal training!" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
           </div>
+
+          <div data-netlify-recaptcha="true"></div>
 
           <div class="text-center mt-6">
             <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire About Personal Training</button>
@@ -558,24 +566,28 @@
     <!-- Contact Us Section -->
     <section id="contact" class="content-section">
       <h2 class="text-3xl font-bold text-center mb-8 text-sky-400">Get In Touch</h2>
-      <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Have a question or want to discuss a custom package? Fill out the form below or email us directly at <a href="mailto:stagereadyperformance@gmail.com" class="text-sky-400 hover:underline">stagereadyperformance@gmail.com</a>.</p>
+      <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Have a question or want to discuss a custom package? Fill out the form below.</p>
 
-      <form action="mailto:stagereadyperformance@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
+        <input type="hidden" name="form-name" value="contact">
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label for="contact-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-            <input type="text" id="contact-name" name="Name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+            <input required type="text" id="contact-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
           </div>
           <div>
             <label for="contact-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-            <input type="email" id="contact-email" name="Email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+            <input required type="email" id="contact-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
           </div>
         </div>
 
         <div class="mb-4">
           <label for="contact-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-          <textarea id="contact-message" name="Message" rows="4" placeholder="Your Message" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
+          <textarea id="contact-message" name="message" rows="4" placeholder="Your Message" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
         </div>
+
+        <div data-netlify-recaptcha="true"></div>
 
         <div class="text-center">
           <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Send Message</button>
