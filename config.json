@@ -1,0 +1,76 @@
+{
+  "branding": {
+    "name": "Stage Ready Performance",
+    "tagline": "SCIENCE • MEETS • ARTISTRY",
+    "shortName": "SRP",
+    "description": "Intelligent strength and conditioning for dancers, athletes, and active adults through movement science, biomechanics, and artistry."
+  },
+  "navigation": [
+    { "label": "Dance", "href": "dance.html" },
+    { "label": "Sport", "href": "sport.html" },
+    { "label": "Personal Training", "href": "personal-training.html" },
+    { "label": "Pricing", "href": "pricing.html" },
+    { "label": "About", "href": "about.html" },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+  "hero": {
+    "eyebrow": "EVIDENCE-BASED PERFORMANCE TRAINING",
+    "title": "Stage Ready",
+    "titleHighlight": "Performance",
+    "description": "Intelligent strength and conditioning for dancers, athletes, and active adults through movement science, biomechanics, and artistry.",
+    "image": "assets/hero-composite-approved.jpg",
+    "buttons": [
+      { "label": "WORK WITH SRP", "href": "contact.html", "style": "primary" },
+      { "label": "VIEW SERVICES", "href": "pricing.html", "style": "secondary" }
+    ]
+  },
+  "services": [
+    {
+      "title": "Dance",
+      "description": "Ballet-specific strength and conditioning, pointe readiness, pre-professional development, and studio curriculum systems.",
+      "image": "assets/dance-approved.jpg",
+      "overlay": "Artistry + Athleticism",
+      "href": "dance.html"
+    },
+    {
+      "title": "Sport",
+      "description": "Performance systems for collegiate and high school athletes focused on speed, power, readiness, and injury reduction.",
+      "image": "assets/sport-approved.jpg",
+      "overlay": "Speed + Power + Readiness",
+      "href": "sport.html"
+    },
+    {
+      "title": "Personal Training",
+      "description": "Evidence-based training for longevity, movement quality, strength, and overall health.",
+      "image": "assets/personal-training-approved.jpg",
+      "overlay": "Longevity + Strength",
+      "href": "personal-training.html"
+    }
+  ],
+  "methodology": {
+    "eyebrow": "SCIENCE MEETS ARTISTRY",
+    "title": "Performance Through Intelligent Movement",
+    "images": [
+      { "src": "assets/linework-ballet-approved.png", "alt": "Ballet Linework" },
+      { "src": "assets/linework-sprinter-approved.png", "alt": "Sprinter Linework" },
+      { "src": "assets/linework-broadjump-approved.png", "alt": "Broad Jump Linework" }
+    ]
+  },
+  "founder": {
+    "image": "assets/headshot.jpg",
+    "eyebrow": "MEET THE FOUNDER",
+    "title": "Built on Performance, Artistry, and Science.",
+    "description": "Stage Ready Performance bridges the gap between movement artistry and modern sports science through evidence-based programming and elite-level coaching.",
+    "buttonLabel": "LEARN MORE",
+    "buttonHref": "about.html"
+  },
+  "cta": {
+    "title": "Ready to Elevate Your Performance?",
+    "buttonLabel": "CONTACT SRP",
+    "buttonHref": "contact.html"
+  },
+  "footer": {
+    "title": "SRP",
+    "tagline": "Stage Ready Performance"
+  }
+}
