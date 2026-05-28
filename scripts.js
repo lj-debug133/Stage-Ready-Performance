@@ -12,8 +12,8 @@ fetch('config.json')
 function renderPage() {
   renderNavbar();
   renderHero();
+  renderPrinciples();
   renderServices();
-  renderFeatured();
   renderMethodology();
   renderAbout();
   renderCTA();
@@ -58,43 +58,44 @@ function renderHero() {
         <div class="hero-buttons">${buttons}</div>
       </div>
       <div class="hero-right">
-        <img src="${config.hero.image}" alt="Stage Ready Performance" class="hero-image" />
+        <img src="${config.hero.image}" alt="Stage Ready Performance Hero" class="hero-image" />
       </div>
+    </div>
+  `;
+}
+
+function renderPrinciples() {
+  const principles = document.getElementById('principles');
+  const principleCards = config.principles.map(principle => `
+    <div class="principle-card">
+      <div class="principle-icon">${principle.icon}</div>
+      <h3>${principle.title}</h3>
+      <p>${principle.description}</p>
+    </div>
+  `).join('');
+
+  principles.innerHTML = `
+    <div class="principles-container">
+      ${principleCards}
     </div>
   `;
 }
 
 function renderServices() {
   const services = document.getElementById('services');
-  const cards = config.services.map(service => `
-    <div class="statement-card">
-      <h3>${service.title}</h3>
-      <p>${service.description}</p>
-    </div>
-  `).join('');
-
-  services.innerHTML = `
-    <div class="section-container">
-      <div class="statement-grid">${cards}</div>
-    </div>
-  `;
-}
-
-function renderFeatured() {
-  const featured = document.getElementById('featured');
-  const cards = config.services.map(service => `
-    <a href="${service.href}" class="feature-card">
-      <img src="${service.image}" alt="${service.title}" />
-      <div class="feature-overlay">
+  const serviceCards = config.services.map(service => `
+    <a href="${service.href}" class="service-card">
+      <div class="service-image" style="background-image: url('${service.image}')"></div>
+      <div class="service-overlay">
         <h2>${service.title}</h2>
-        <p>${service.overlay}</p>
+        <p>${service.description}</p>
       </div>
     </a>
   `).join('');
 
-  featured.innerHTML = `
+  services.innerHTML = `
     <div class="section-container">
-      <div class="featured-grid">${cards}</div>
+      <div class="services-grid">${serviceCards}</div>
     </div>
   `;
 }
@@ -110,8 +111,9 @@ function renderMethodology() {
   methodology.innerHTML = `
     <div class="section-container">
       <div class="methodology-header">
-        <p class="eyebrow dark">${config.methodology.eyebrow}</p>
+        <p class="eyebrow">${config.methodology.eyebrow}</p>
         <h2>${config.methodology.title}</h2>
+        <p class="methodology-description">${config.methodology.description}</p>
       </div>
       <div class="methodology-grid">${images}</div>
     </div>
@@ -120,16 +122,21 @@ function renderMethodology() {
 
 function renderAbout() {
   const about = document.getElementById('about');
+  const educationList = config.founder.education.map(item => `<li>${item}</li>`).join('');
+
   about.innerHTML = `
     <div class="section-container about-grid">
       <div class="about-image">
-        <img src="${config.founder.image}" alt="Founder" />
+        <img src="${config.founder.image}" alt="${config.founder.name}" />
       </div>
       <div class="about-content">
         <p class="eyebrow">${config.founder.eyebrow}</p>
-        <h2>${config.founder.title}</h2>
-        <p>${config.founder.description}</p>
-        <a href="${config.founder.buttonHref}" class="primary-btn">${config.founder.buttonLabel}</a>
+        <h2>${config.founder.name}</h2>
+        <p class="about-description">${config.founder.description}</p>
+        <h3>Education & Certifications</h3>
+        <ul class="education-list">
+          ${educationList}
+        </ul>
       </div>
     </div>
   `;
@@ -147,7 +154,7 @@ function renderCTA() {
 
 function renderFooter() {
   const footer = document.getElementById('footer');
-  const navLinks = config.navigation.map(link => 
+  const navLinks = config.navigation.filter(link => link.label !== 'Home').map(link => 
     `<a href="${link.href}">${link.label}</a>`
   ).join('');
 
@@ -157,7 +164,9 @@ function renderFooter() {
         <h3>${config.footer.title}</h3>
         <p>${config.footer.tagline}</p>
       </div>
-      <div class="footer-right">${navLinks}</div>
+      <div class="footer-right">
+        ${navLinks}
+      </div>
     </div>
   `;
 }
