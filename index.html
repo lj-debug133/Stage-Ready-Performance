@@ -1,687 +1,1014 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stage Ready Performance bridges science and artistry through specialized training programs for dancers, athletes, teams, studios, and individuals.">
   <title>Stage Ready Performance</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --black: #080808;
+      --matte: #0B0B0B;
+      --charcoal: #222222;
+      --maroon: #5B0F1A;
+      --maroon-dark: #31080E;
+      --gold: #D4AF37;
+      --bronze: #B67E4A;
+      --cream: #F4EFE6;
+      --muted: #C9C0B3;
+      --line: rgba(212, 175, 55, 0.34);
+      --soft-line: rgba(244, 239, 230, 0.12);
+      --text: #F4EFE6;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #111827; /* Dark Gray */
-      color: #F3F4F6; /* Light Gray */
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text);
+      background: var(--black);
+      line-height: 1.6;
     }
-    .nav-link {
-      transition: color 0.3s ease;
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+    ul { margin-top: 22px; color: var(--muted); line-height: 1.9; }
+
+    .site-shell {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(91, 15, 26, 0.28), transparent 34%),
+        radial-gradient(circle at 82% 18%, rgba(182, 126, 74, 0.12), transparent 30%),
+        var(--black);
     }
-    .nav-link:hover,
-    .nav-link.active {
-      color: #38bdf8; /* Light Blue */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 8, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
-    .cta-button {
-      transition: background-color 0.3s ease, transform 0.3s ease;
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
-    .cta-button:hover {
-      background-color: #0c4a6e; /* Darker Blue */
-      transform: translateY(-2px);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: max-content;
     }
-    .content-section {
+    .brand-logo {
+      width: 68px;
+      height: 50px;
+      object-fit: contain;
+      object-position: center;
+    }
+    .brand-mark {
+      font-family: 'Cinzel', Georgia, serif;
+      color: var(--gold);
+      font-size: 42px;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+    .brand-name {
+      font-family: 'Cinzel', Georgia, serif;
+      letter-spacing: 0.22em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    .brand-tag {
+      color: var(--bronze);
+      letter-spacing: 0.28em;
+      font-size: 9px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .nav-links a,
+    .mobile-panel a {
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active,
+    .mobile-panel a:hover,
+    .mobile-panel a.active {
+      color: var(--gold);
+    }
+    .menu-toggle {
       display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--cream);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-direction: column;
     }
-    .content-section.active {
+    .menu-toggle span {
+      width: 19px;
+      height: 2px;
+      background: currentColor;
       display: block;
+    }
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 18px 24px 24px;
+      background: rgba(8, 8, 8, 0.98);
+    }
+    .mobile-panel a {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--soft-line);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 22px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream);
+      font-family: inherit;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+    }
+    .btn:hover {
+      background: rgba(212, 175, 55, 0.12);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--maroon);
+      border-color: var(--gold);
+    }
+    .btn-primary:hover {
+      background: #741525;
+    }
+
+    main > .page { display: none; }
+    main > .page.active-page { display: block; }
+
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 82px 24px;
+    }
+    .eyebrow {
+      color: var(--bronze);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', Georgia, serif;
+      font-weight: 500;
+      line-height: 1.08;
+      margin: 0;
+    }
+    h1 {
+      font-size: clamp(50px, 8vw, 105px);
+      color: #E8D8BB;
+    }
+    h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--cream);
+    }
+    h3 {
+      font-size: 28px;
+      color: var(--gold);
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 700px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .hero-copy {
+      padding: 96px 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 680px;
+    }
+    .hero-copy::before {
+      content: '';
+      position: absolute;
+      inset: 10% 8%;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
+    .hero-copy > * {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 34px;
+    }
+    .hero-art {
+      min-height: 680px;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.66), rgba(8, 8, 8, 0.08)),
+        url('assets/assets/hero/hero-approved.jpg') center / cover no-repeat;
+      border-left: 1px solid var(--line);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .principle {
+      padding: 34px 24px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .principle:last-child { border-right: 0; }
+    .principle-icon {
+      color: var(--gold);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .principle h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      color: var(--cream);
+    }
+    .principle p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .split.reverse { grid-template-columns: 1.25fr 0.75fr; }
+    .copy-panel {
+      padding: 72px 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 520px;
+    }
+    .copy-panel .lead + p {
+      margin-top: 22px;
+      color: var(--muted);
+    }
+    .image-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 500px;
+    }
+    .image-card,
+    .program-image,
+    .service-image,
+    .about-support,
+    .orbital {
+      background-color: #111;
+    }
+    .image-card {
+      background-position: center;
+      background-size: cover;
+      border-left: 1px solid var(--line);
+      min-height: 380px;
+      position: relative;
+    }
+    .image-card::after,
+    .program-card::after,
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.05));
+      pointer-events: none;
+    }
+
+    .dance-a { background-image: url('assets/assets/dance/dance-2a.jpg'); }
+    .dance-b { background-image: url('assets/assets/dance/dance-2b-pointe.jpg'); }
+    .dance-c { background-image: url('assets/assets/dance/dance-2c.jpg'); }
+    .sport-a { background-image: url('assets/assets/sport/sport-3a.jpg'); }
+    .sport-b { background-image: url('assets/assets/sport/sport-3b.jpg'); }
+    .sport-c { background-image: url('assets/assets/sport/sport-3c.jpg'); }
+    .pt-a { background-image: url('assets/assets/personal/personal-4a.jpg'); }
+    .pt-b { background-image: url('assets/assets/personal/personal-4b.jpg'); }
+    .pt-c { background-image: url('assets/assets/personal/personal-4c.jpg'); }
+
+    .cream-section {
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(91, 15, 26, 0.08)),
+        var(--cream);
+      color: #111;
+      border-bottom: 1px solid var(--line);
+    }
+    .cream-section h2,
+    .cream-section h3 {
+      color: #111;
+    }
+    .cream-section .eyebrow { color: #7A3A2C; }
+    .cream-section .lead { color: #444; }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+    }
+    .method-img {
+      min-height: 260px;
+      background: #e7d7bd center / cover no-repeat;
+      border: 1px solid rgba(91, 15, 26, 0.25);
+    }
+    .line-b { background-image: url('assets/assets/methodology/methodology-6b.png'); }
+    .line-a { background-image: url('assets/assets/methodology/methodology-6a.png'); }
+    .line-c { background-image: url('assets/assets/methodology/methodology-6c.png'); }
+    .line-d { background-image: url('assets/assets/methodology/methodology-6d.png'); }
+
+    .program-grid,
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .program-card,
+    .pricing-card,
+    .service-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .program-image,
+    .service-image {
+      min-height: 300px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .program-content,
+    .pricing-card {
+      padding: 26px;
+    }
+    .program-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .program-content p,
+    .pricing-card li,
+    .pricing-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .service-dance { background-image: url('assets/assets/dance/dance-2a.jpg'); }
+    .service-team { background-image: url('assets/assets/sport/sport-3b.jpg'); }
+    .service-online { background-image: url('assets/assets/hero/hero-approved.jpg'); }
+    .service-personal { background-image: url('assets/assets/personal/personal-4b.jpg'); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 0.8fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .headshot {
+      background: url('assets/assets/founder/headshot.jpg') center / cover no-repeat;
+      min-height: 540px;
+      filter: grayscale(100%);
+      border-right: 1px solid var(--line);
+    }
+    .about-copy {
+      padding: 64px 48px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .about-copy p {
+      margin-top: 24px;
+      color: var(--muted);
+    }
+    .about-copy h3 {
+      margin-top: 28px;
+      font-size: 22px;
+    }
+    .about-support {
+      background: url('assets/assets/about/about-5a.jpg') center / cover no-repeat;
+      min-height: 540px;
+    }
+    .orbital {
+      background: url('assets/assets/about/about-5c.png') center / cover no-repeat;
+      min-height: 280px;
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-card h3 { margin-bottom: 18px; }
+    .price {
+      font-family: 'Cinzel', Georgia, serif;
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+    .pricing-card ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .pricing-note {
+      margin-top: 24px;
+      color: var(--muted);
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      background: #101010;
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 15px;
+    }
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    label {
+      color: var(--bronze);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: linear-gradient(90deg, var(--maroon-dark), var(--maroon));
+      border-top: 1px solid var(--line);
+      padding: 48px 24px 22px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 36px;
+    }
+    .footer-logo {
+      width: 92px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .footer-submark {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      margin-bottom: 14px;
+    }
+    .footer-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .footer-socials a {
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      padding: 9px 12px;
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 11px;
+      transition: color 0.22s ease, background 0.22s ease;
+    }
+    .footer-socials a:hover {
+      color: var(--black);
+      background: var(--gold);
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 36px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #d7c7b2;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .mobile-panel.open {
+        display: block;
+      }
+      .hero,
+      .split,
+      .split.reverse,
+      .about-grid,
+      .form-wrap {
+        grid-template-columns: 1fr;
+      }
+      .principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .program-grid,
+      .pricing-grid,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+      .image-grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hero-art {
+        min-height: 420px;
+        border-left: 0;
+      }
+      .hero-copy {
+        min-height: auto;
+        padding: 72px 28px;
+      }
+      .copy-panel {
+        min-height: auto;
+        padding: 56px 28px;
+      }
+      .image-card {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+      .headshot,
+      .about-copy {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding: 12px 18px;
+      }
+      .brand-logo {
+        width: 54px;
+        height: 42px;
+      }
+      .brand-name {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+      }
+      .brand-tag {
+        font-size: 8px;
+        letter-spacing: 0.16em;
+      }
+      h1 {
+        font-size: 44px;
+      }
+      h2 {
+        font-size: 34px;
+      }
+      .principles {
+        grid-template-columns: 1fr;
+      }
+      .principle {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .about-copy {
+        padding: 48px 28px;
+      }
+      .section {
+        padding: 64px 22px;
+      }
     }
   </style>
 </head>
-<body class="antialiased">
-
-  <!-- Navigation Bar -->
-  <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <a href="#home" class="text-2xl font-bold text-sky-400 nav-link active" data-page="home">Stage Ready Performance</a>
-        </div>
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-4">
-            <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="home">Home</a>
-            <a href="#dance" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="dance">Dance</a>
-            <a href="#sport" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="sport">Sport</a>
-            <a href="#personal" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="personal">Personal Training</a>
-            <a href="#testimonials" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="testimonials">Testimonials</a>
-            <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="about">About</a>
-            <a href="#pricing" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="pricing">Pricing</a>
-            <a href="#contact" class="nav-link px-3 py-2 rounded-md text-sm font-medium" data-page="contact">Contact Us</a>
-          </div>
-        </div>
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-            <span class="sr-only">Open main menu</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="mobile-menu" class="md:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="home">Home</a>
-        <a href="#dance" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="dance">Dance Performance</a>
-        <a href="#sport" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="sport">Sport Performance</a>
-        <a href="#personal" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="personal">Personal Training</a>
-        <a href="#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="testimonials">Testimonials</a>
-        <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="about">About</a>
-        <a href="#pricing" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="pricing">Pricing</a>
-        <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium" data-page="contact">Contact Us</a>
-      </div>
-    </div>
-  </nav>
-
-  <main id="main-content" class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-
-    <!-- Home Section -->
-    <section id="home" class="content-section active">
-      <!-- Hero Section -->
-      <div class="text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-          Unlock Your <span class="text-sky-400">Peak Performance</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-          At Stage Ready Performance, we empower artists and athletes to achieve their highest potential through specialized training programs designed for excellence.
-        </p>
-        <a href="#consultation" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg inline-block">Book a Free Consultation</a>
-      </div>
-
-      <!-- Training Principles Section -->
-      <div class="py-16 sm:py-24">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Core Training Principles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <!-- Principle 1 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">Progressive Overload</h3>
-            <p class="mt-2 text-gray-300">We ensure consistent progress by systematically increasing the demands on your body, helping you break through plateaus and reach new heights.</p>
-          </div>
-
-          <!-- Principle 2 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.595-.482-1.077-1.077-1.077S12.1 5.492 12.1 6.087v8.825c0 .595.482 1.077 1.077 1.077s1.077-.482 1.077-1.077V6.087z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 10.153c0-.595-.482-1.077-1.077-1.077S12.1 9.558 12.1 10.153v4.759c0 .595.482 1.077 1.077 1.077s1.077-.482 1.077-1.077v-4.759z"/>
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM10.923 5.015c0-.595.482-1.077 1.077-1.077s1.077.482 1.077 1.077v.001c0 .595-.482 1.077-1.077 1.077s-1.077-.482-1.077-1.077v-.001z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">Science-Backed & Data-Driven</h3>
-            <p class="mt-2 text-gray-300">Our programming is rooted in scientific principles and tailored with performance data to create the most effective path to your goals.</p>
-          </div>
-
-          <!-- Principle 3 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">Total Athletic Development</h3>
-            <p class="mt-2 text-gray-300">We train every facet of performance: speed, agility, strength, hypertrophy, and explosive power for a complete athletic profile.</p>
-          </div>
-
-          <!-- Principle 4 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.6-3.749A11.959 11.959 0 0118 6c-.476 0-.94.092-1.382.264M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">Injury Prevention & Longevity</h3>
-            <p class="mt-2 text-gray-300">Build a resilient body with targeted exercises for stability, mobility, and flexibility to ensure a long and healthy performance career.</p>
-          </div>
-
-          <!-- Principle 5 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.962c.513-.96 1.487-1.593 2.571-1.82m-2.571 1.82a3.498 3.498 0 00-2.571 1.82M3 12.75a9.06 9.06 0 011.757-5.423m11.486 0A9.06 9.06 0 0121 12.75m-18 0a9.06 9.06 0 015.932-8.497M15 8.25a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">For Teams, Studios & Individuals</h3>
-            <p class="mt-2 text-gray-300">We offer specialized services tailored to the unique needs of professional teams, dance studios, and dedicated individuals.</p>
-          </div>
-
-          <!-- Principle 6 -->
-          <div class="text-center p-6 bg-gray-800/50 rounded-xl">
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <h3 class="mt-5 text-xl font-semibold text-sky-400">Free 30-Minute Consultation</h3>
-            <p class="mt-2 text-gray-300">Start with a complimentary consultation to discuss your goals and discover how we can help you achieve them. No strings attached.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Free Consultation Form Section -->
-      <div id="consultation" class="bg-gray-900/60 p-8 rounded-2xl mt-12 sm:mt-16 scroll-mt-20">
-        <h2 class="text-3xl font-bold text-center mb-2 text-sky-400">Claim Your Free Consultation</h2>
-        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Take the first step. Fill out the form below, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
-
-        <form name="consultation" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
-          <input type="hidden" name="form-name" value="consultation">
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label for="consult-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input required type="text" id="consult-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
-            </div>
-            <div>
-              <label for="consult-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input required type="email" id="consult-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label for="consult-message" class="block text-gray-300 mb-2 sr-only">Your Goals</label>
-            <textarea id="consult-message" name="message" rows="4" placeholder="Tell us a little about your goals..." class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
-          </div>
-
-          <div data-netlify-recaptcha="true"></div>
-
-          <div class="text-center">
-            <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire Now</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Dance Performance Section -->
-    <section id="dance" class="content-section">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Structured Ballet Curriculum for Studios</h2>
-        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">A structured, progressive curriculum is the backbone of any successful dance studio. It ensures consistent, high-quality training for all students, fosters long-term development, and provides clear benchmarks for progress. Our curriculum development service is designed to give you a comprehensive, ready-to-implement framework for excellence.</p>
-      </div>
-
-      <div class="bg-gray-800/50 p-8 rounded-xl mb-12">
-        <h3 class="text-2xl font-bold text-white text-center mb-6">Our Process Includes:</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Stage Ready Performance Home">
+          <img class="brand-logo" src="assets/assets/logos/SRP_Primary_Logo.png" alt="SRP">
           <div>
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold text-sky-400">1-2 Hour Online Consultation</h4>
-            <p class="text-gray-300 mt-2">We dive deep into your studio's unique philosophy, goals, and student demographics.</p>
+            <div class="brand-name">Stage Ready Performance</div>
+            <div class="brand-tag">Science • Meets • Artistry</div>
           </div>
-
-          <div>
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold text-sky-400">Video Reviews of Each Level</h4>
-            <p class="text-gray-300 mt-2">You receive detailed video explanations and demonstrations for every level of the curriculum.</p>
-          </div>
-
-          <div>
-            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-sky-500 text-white mx-auto mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold text-sky-400">Goal & Objective Planning</h4>
-            <p class="text-gray-300 mt-2">We help you establish clear, achievable goals for student progression and teacher training.</p>
-          </div>
-        </div>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#dance">Dance</a>
+          <a href="#sport">Sport</a>
+          <a href="#personal-training">Personal Training</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact Us</a>
+        </nav>
+        <a class="btn btn-primary nav-cta" href="#contact">Book a Free Consultation</a>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+      <nav class="mobile-panel" aria-label="Mobile navigation">
+        <a href="#home">Home</a>
+        <a href="#dance">Dance</a>
+        <a href="#sport">Sport</a>
+        <a href="#personal-training">Personal Training</a>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </header>
 
-      <!-- Packages -->
-      <h3 class="text-3xl font-bold text-center mb-10 text-white">Curriculum Packages</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gray-800 p-8 rounded-lg flex flex-col">
-          <h4 class="text-2xl font-bold text-sky-400 mb-2">Corps Package</h4>
-          <p class="text-4xl font-bold mb-4">$900</p>
-          <ul class="space-y-3 text-gray-300 flex-grow">
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Clear objectives and goals for each level of your studio.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Musical theory progressions throughout your studio levels.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Major and fine motor movement teaching strategies for young developmental stages.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Three fully written lesson plans per level for reference.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> A complete glossary with exercise descriptions, meanings, and photos for reference.</li>
-          </ul>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg flex flex-col">
-          <h4 class="text-2xl font-bold text-sky-400 mb-2">Soloist Package</h4>
-          <p class="text-4xl font-bold mb-4">$1000</p>
-          <ul class="space-y-3 text-gray-300 flex-grow">
-            <li class="flex items-start"><span class="font-bold text-sky-400 mr-2 mt-1">+</span> Includes all aspects of the <span class="font-semibold text-white mx-1">Corps Package</span>.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Produces a studio-specific grading sheet (2 semesters) with sections for etiquette, technique, ensemble, and more.</li>
-          </ul>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg flex flex-col">
-          <h4 class="text-2xl font-bold text-sky-400 mb-2">Prima Package</h4>
-          <p class="text-4xl font-bold mb-4">$1400</p>
-          <ul class="space-y-3 text-gray-300 flex-grow">
-            <li class="flex items-start"><span class="font-bold text-sky-400 mr-2 mt-1">+</span> Includes all aspects of the <span class="font-semibold text-white mx-1">Soloist Package</span>.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Additional curriculum for pre-pointe and pointe classes.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Includes a pointe shoe fitting guide, sewing guide, and shoe life/pricing guide.</li>
-          </ul>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg border-2 border-sky-400 flex flex-col">
-          <h4 class="text-2xl font-bold text-sky-400 mb-2">Etoile Package</h4>
-          <p class="text-4xl font-bold mb-4">$1600</p>
-          <ul class="space-y-3 text-gray-300 flex-grow">
-            <li class="flex items-start"><span class="font-bold text-sky-400 mr-2 mt-1">+</span> Includes all of the above package details.</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> 3 dance strength & conditioning classes (beginner-advanced).</li>
-            <li class="flex items-start"><span class="text-sky-400 mr-2 mt-1">&#10003;</span> Direct teacher access to exercise videos, descriptions, and a messaging center with a dance fitness coach.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Renewal Policy -->
-      <div class="mt-16">
-        <h3 class="text-3xl font-bold text-center mb-6 text-white">License & Renewal Policy</h3>
-        <div class="max-w-3xl mx-auto bg-gray-800/50 p-8 rounded-xl text-gray-300 space-y-4">
-          <p><strong class="text-sky-400">License:</strong> All curriculum packages are passcode protected and licensed for 1-year of use.</p>
-          <p><strong class="text-sky-400">Renewal Fee:</strong> An annual 30% renewal fee of the original package price is required to maintain access.</p>
-          <p><strong class="text-sky-400">Upgrades:</strong> Studios can upgrade their package at any time with a 70% discount on the new package, plus the price difference.</p>
-          <p><strong class="text-sky-400">Payments:</strong> We accept payments securely through PayPal or directly via Train Heroic.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sport Performance Section -->
-    <section id="sport" class="content-section">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Team Training via Train Heroic</h2>
-        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">Elevate your team's performance with our comprehensive and interactive training programs, delivered through the powerful Train Heroic platform. We provide everything you need to build a stronger, faster, and more resilient team.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
-        <div class="bg-gray-800/50 p-8 rounded-xl">
-          <h3 class="text-2xl font-bold text-white mb-4">Platform Features</h3>
-          <ul class="space-y-4 text-gray-300">
-            <li class="flex items-start">
-              <svg class="h-6 w-6 text-sky-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-              <span><strong class="text-white">Custom Programming:</strong> Tailored specifically to your sport, season (in-season, off-season), and unique team needs.</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-6 w-6 text-sky-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              <span><strong class="text-white">Exercise Library:</strong> Clear videos and detailed descriptions for every exercise to ensure proper form and technique.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-gray-800/50 p-8 rounded-xl">
-          <ul class="space-y-4 text-gray-300">
-            <li class="flex items-start">
-              <svg class="h-6 w-6 text-sky-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span><strong class="text-white">Athlete Dashboards:</strong> Individualized portals with lifting percentages calculated from testing, tracking progress automatically.</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-6 w-6 text-sky-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-              <span><strong class="text-white">Direct Coach Access:</strong> Seamless in-app messaging for athletes to ask questions and receive feedback directly from their coach.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Packages -->
-      <h3 class="text-3xl font-bold text-center mb-10 text-white">Team Package Options</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gray-800 p-8 rounded-lg">
-          <h4 class="text-2xl font-bold text-sky-400">Package 1: 4-Week Strength</h4>
-          <p class="text-3xl font-bold my-2">$300</p>
-          <p class="text-gray-300">A 4-week session with 2–3 days per week of focused strength training.</p>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg">
-          <h4 class="text-2xl font-bold text-sky-400">Package 2: 4-Week Total Performance</h4>
-          <p class="text-3xl font-bold my-2">$500</p>
-          <p class="text-gray-300">A 4-week session with 5–6 days per week of integrated strength and speed training.</p>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg">
-          <h4 class="text-2xl font-bold text-sky-400">Package 3: 6-Week Strength</h4>
-          <p class="text-3xl font-bold my-2">$400</p>
-          <p class="text-gray-300">A 6-week session with 2–3 days per week of focused strength training.</p>
-        </div>
-
-        <div class="bg-gray-800 p-8 rounded-lg">
-          <h4 class="text-2xl font-bold text-sky-400">Package 4: 6-Week Total Performance</h4>
-          <p class="text-3xl font-bold my-2">$700</p>
-          <p class="text-gray-300">A 6-week session with 5–6 days per week of integrated strength and speed training.</p>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center">
-        <div class="max-w-3xl mx-auto bg-gray-800/50 p-6 rounded-xl text-gray-300">
-          <p><strong class="text-sky-400">Please Note:</strong> Package selection will be discussed during your team's consultation. Our primary goal is always the development of healthy, robust athletes, and we will recommend the plan that best fits that objective.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Personal Training Section -->
-    <section id="personal" class="content-section">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Individualized Personal Training</h2>
-        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">Commit to your personal health and fitness goals with our one-on-one training programs, delivered seamlessly through the Train Heroic platform. We design a path that's uniquely yours.</p>
-      </div>
-
-      <div class="bg-gray-800/50 p-8 rounded-xl mb-12 max-w-4xl mx-auto">
-        <h3 class="text-2xl font-bold text-white text-center mb-6">Every Personal Training Plan Includes:</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="flex items-start">
-            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-sky-500 text-white flex items-center justify-center">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-xl font-semibold text-white">Custom-Built Programs</h4>
-              <p class="text-gray-300 mt-1">Programming is tailored specifically to your goals, physical restrictions, and current life stage.</p>
+    <main>
+      <section id="home" class="page active-page" aria-labelledby="hero-title">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Science. Strength. Artistry.</p>
+            <h1 id="hero-title">Unlock Your Peak <span>Performance</span></h1>
+            <p class="lead">At Stage Ready Performance, we empower artists and athletes to achieve their highest potential through specialized training programs designed for excellence.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Book a Free Consultation</a>
+              <a class="btn" href="#pricing">Explore Programs</a>
             </div>
           </div>
-
-          <div class="flex items-start">
-            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-sky-500 text-white flex items-center justify-center">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-xl font-semibold text-white">Exercise Video Library</h4>
-              <p class="text-gray-300 mt-1">Access to clear videos and descriptions for every exercise ensures you perform movements safely and effectively.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-sky-500 text-white flex items-center justify-center">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-xl font-semibold text-white">Personal Dashboard</h4>
-              <p class="text-gray-300 mt-1">Track your progress, view your upcoming workouts, and see your achievements all in one place.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-sky-500 text-white flex items-center justify-center">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            </div>
-            <div class="ml-4">
-              <h4 class="text-xl font-semibold text-white">Direct Coach Messaging</h4>
-              <p class="text-gray-300 mt-1">Stay connected with your coach through direct messaging for support, feedback, and motivation.</p>
-            </div>
-          </div>
+          <div class="hero-art" role="img" aria-label="Approved SRP hero composite showing dance and athletic performance"></div>
         </div>
-      </div>
 
-      <div class="bg-gray-900/60 p-8 rounded-2xl mt-16">
-        <h3 class="text-3xl font-bold text-center mb-2 text-sky-400">Package Details: Coming Soon!</h3>
-        <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">We are finalizing our personal training packages to provide the best possible value. If you're interested in getting started, please send us an inquiry, and you'll be the first to know when they launch!</p>
+        <div class="principles" aria-label="SRP training principles">
+          <article class="principle"><div class="principle-icon">01</div><h3>Progressive Overload</h3><p>Systematically increasing demands to help you break through plateaus.</p></article>
+          <article class="principle"><div class="principle-icon">02</div><h3>Science-Backed</h3><p>Rooted in scientific principles and tailored with performance data.</p></article>
+          <article class="principle"><div class="principle-icon">03</div><h3>Total Development</h3><p>Speed, agility, strength, hypertrophy, and explosive power.</p></article>
+          <article class="principle"><div class="principle-icon">04</div><h3>Longevity</h3><p>Stability, mobility, and flexibility for a healthy performance career.</p></article>
+          <article class="principle"><div class="principle-icon">05</div><h3>Teams &amp; Studios</h3><p>Services for professional teams, dance studios, and individuals.</p></article>
+          <article class="principle"><div class="principle-icon">30</div><h3>Free Consultation</h3><p>A complimentary 30-minute session to discuss your goals.</p></article>
+        </div>
 
-        <form name="personal-training" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
-          <input type="hidden" name="form-name" value="personal-training">
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div class="section">
+          <div class="form-wrap">
             <div>
-              <label for="pt-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-              <input required type="text" id="pt-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+              <p class="eyebrow">Claim Your Free Consultation</p>
+              <h2>Start with a conversation.</h2>
+              <p class="lead">Take the first step. Fill out the form, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
             </div>
-            <div>
-              <label for="pt-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-              <input required type="email" id="pt-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label for="pt-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-            <textarea id="pt-message" name="message" rows="4" placeholder="I'm interested in personal training!" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
-          </div>
-
-          <div data-netlify-recaptcha="true"></div>
-
-          <div class="text-center mt-6">
-            <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Inquire About Personal Training</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="content-section">
-      <div class="text-center py-20">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">What Our Clients Say</h2>
-        <p class="text-xl text-gray-400">Coming Soon</p>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="content-section">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Meet the Founder</h2>
-        <p class="text-2xl text-white font-semibold mb-12">Lea-Janell Mitchell, MS, CSCS</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
-        <div class="md:col-span-2 flex items-center justify-center">
-          <img src="https://placehold.co/400x400/1f2937/9ca3af?text=Lea-Janell+Mitchell" alt="Lea-Janell Mitchell, Founder" class="w-full aspect-square object-cover rounded-lg shadow-lg">
-        </div>
-
-        <div class="md:col-span-3">
-          <p class="text-lg text-gray-300 mb-6">Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise. Her unique background allows her to bridge the gap between artistry and athleticism, creating programs that are both scientifically rigorous and deeply attuned to the demands of performance.</p>
-
-          <div class="space-y-4">
-            <div>
-              <h4 class="text-xl font-semibold text-sky-400">Education & Certifications</h4>
-              <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                <li><strong>Master of Science in Strength and Conditioning</strong>, with a thesis on ballet cross-training and landing mechanics.</li>
-                <li><strong>BFA in Dance Performance and Ballet Pedagogy</strong> from The Hartt School.</li>
-                <li>Certified Strength and Conditioning Specialist (<strong>CSCS</strong>) through the NSCA.</li>
-                <li>Additional Certifications: <strong>NASM, USAW1, FMS</strong>.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 class="text-xl font-semibold text-sky-400">Coaching & Performance Experience</h4>
-              <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                <li>Coached athletes across <strong>28 NCAA varsity teams</strong>, from DIII to D1 levels.</li>
-                <li>Performed in Soloist and Principal roles with <strong>Ballet Hartford</strong> and <strong>Fort Wayne Ballet</strong>.</li>
-                <li>International performance experience, including European tours and dancing at <strong>The White House</strong>.</li>
-              </ul>
-            </div>
-
-            <div class="mt-6 bg-gray-800/50 p-6 rounded-xl">
-              <h4 class="text-xl font-semibold text-sky-400">Guiding Philosophy</h4>
-              <p class="text-gray-300 mt-2">Lea-Janell's coaching philosophy centers on building resilient, powerful performers from the ground up. She emphasizes mastering mobility, enhancing stability, and developing performance-specific power to ensure longevity and peak potential in any athletic or artistic endeavor.</p>
-            </div>
+            <form name="consultation" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/">
+              <input type="hidden" name="form-name" value="consultation">
+              <label for="consult-name">Name</label>
+              <input id="consult-name" name="name" type="text" autocomplete="name" required>
+              <label for="consult-email">Email</label>
+              <input id="consult-email" name="email" type="email" autocomplete="email" required>
+              <label for="consult-goals">Your Goals</label>
+              <textarea id="consult-goals" name="goals" required></textarea>
+              <div data-netlify-recaptcha="true"></div>
+              <button class="btn btn-primary" type="submit">Inquire Now</button>
+            </form>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="content-section">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-sky-400 mb-4">Our Services & Pricing</h2>
-        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12">Transparent pricing for our specialized performance packages. Choose the plan that best fits your goals and let's get started.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <div class="bg-gray-800/50 p-8 rounded-xl">
-          <h3 class="text-2xl font-bold text-sky-400 mb-6 text-center">Dance Performance Curriculum</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Corps Package</span>
-              <span class="text-xl font-bold text-sky-300">$900</span>
-            </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Soloist Package</span>
-              <span class="text-xl font-bold text-sky-300">$1000</span>
-            </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Prima Package</span>
-              <span class="text-xl font-bold text-sky-300">$1400</span>
-            </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Etoile Package</span>
-              <span class="text-xl font-bold text-sky-300">$1600</span>
-            </div>
+      <section id="dance" class="page" aria-labelledby="dance-title">
+        <div class="split">
+          <div class="copy-panel">
+            <p class="eyebrow">Dance Performance</p>
+            <h2 id="dance-title">Structured Ballet Curriculum for Studios</h2>
+            <p class="lead">A structured, progressive curriculum is the backbone of any successful dance studio. It ensures consistent, high-quality training for all students, fosters long-term development, and provides clear benchmarks for progress.</p>
+            <p>Our curriculum development service is designed to give you a comprehensive, ready-to-implement framework for excellence.</p>
+          </div>
+          <div class="image-grid-3">
+            <div class="image-card dance-a" role="img" aria-label="Approved dance editorial image"></div>
+            <div class="image-card dance-b" role="img" aria-label="Approved contemporary pointe shoe close-up"></div>
+            <div class="image-card dance-c" role="img" aria-label="Approved dance grand jete image"></div>
           </div>
         </div>
 
-        <div class="bg-gray-800/50 p-8 rounded-xl">
-          <h3 class="text-2xl font-bold text-sky-400 mb-6 text-center">Team Sport Performance</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Package 1 (4-Week)</span>
-              <span class="text-xl font-bold text-sky-300">$300</span>
+        <div class="section">
+          <p class="eyebrow">Our Process Includes</p>
+          <div class="program-grid">
+            <article class="program-card"><div class="program-content"><h3>1-2 Hour Online Consultation</h3><p>We dive deep into your studio's unique philosophy, goals, and student demographics.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Video Reviews</h3><p>You receive detailed video explanations and demonstrations for every level of the curriculum.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Goal &amp; Objective Planning</h3><p>We help you establish clear, achievable goals for student progression and teacher training.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Licensed Delivery</h3><p>Passcode protected curriculum access with transparent renewal and upgrade policies.</p></div></article>
+          </div>
+        </div>
+
+        <div class="cream-section">
+          <div class="section">
+            <div style="text-align:center">
+              <p class="eyebrow">Our Methodology</p>
+              <h2>Science Meets Artistry</h2>
+              <p class="lead" style="margin:18px auto 0">Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.</p>
             </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Package 2 (4-Week)</span>
-              <span class="text-xl font-bold text-sky-300">$500</span>
-            </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Package 3 (6-Week)</span>
-              <span class="text-xl font-bold text-sky-300">$400</span>
-            </div>
-            <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-              <span class="text-lg text-white">Package 4 (6-Week)</span>
-              <span class="text-xl font-bold text-sky-300">$700</span>
+            <div class="method-grid">
+              <div class="method-img line-b" role="img" aria-label="Approved ballet linework"></div>
+              <div class="method-img line-a" role="img" aria-label="Approved male sprinter linework"></div>
+              <div class="method-img line-c" role="img" aria-label="Approved strength biomechanics linework"></div>
+              <div class="method-img line-d" role="img" aria-label="Approved change of direction biomechanics linework"></div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="mt-10 bg-gray-800/50 p-8 rounded-xl">
-        <h3 class="text-2xl font-bold text-sky-400 mb-4 text-center">Individual Personal Training</h3>
-        <p class="text-center text-lg text-white">Packages Coming Soon</p>
-        <p class="text-center text-gray-300 mt-2">Please reach out via our contact form for inquiries.</p>
-      </div>
-    </section>
+      <section id="sport" class="page" aria-labelledby="sport-title">
+        <div class="split reverse">
+          <div class="image-grid-3">
+            <div class="image-card sport-a" role="img" aria-label="Approved sprint start image"></div>
+            <div class="image-card sport-b" role="img" aria-label="Approved strength training image"></div>
+            <div class="image-card sport-c" role="img" aria-label="Approved plyometric jump image"></div>
+          </div>
+          <div class="copy-panel">
+            <p class="eyebrow">Sport Performance</p>
+            <h2 id="sport-title">Team Training</h2>
+            <p class="lead">Elevate your team's performance with comprehensive and interactive training programs delivered through TrainHeroic. We provide everything you need to build a stronger, faster, and more resilient team.</p>
+            <ul>
+              <li>Custom programming tailored to your sport and season.</li>
+              <li>Exercise library with videos and descriptions.</li>
+              <li>Athlete dashboards with testing-based percentages.</li>
+              <li>Direct coach access through in-app messaging.</li>
+            </ul>
+          </div>
+        </div>
 
-    <!-- Contact Us Section -->
-    <section id="contact" class="content-section">
-      <h2 class="text-3xl font-bold text-center mb-8 text-sky-400">Get In Touch</h2>
-      <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Have a question or want to discuss a custom package? Fill out the form below.</p>
+        <div class="section">
+          <p class="eyebrow">Services</p>
+          <h2>Training for every stage of your journey.</h2>
+          <div class="program-grid">
+            <article class="service-card"><div class="program-image service-team" role="img" aria-label="Approved team training image"></div><div class="program-content"><h3>Team Training</h3><p>Online strength training for collegiate and high school teams through TrainHeroic.</p></div></article>
+            <article class="service-card"><div class="program-image sport-a" role="img" aria-label="Approved sprint performance image"></div><div class="program-content"><h3>Speed &amp; Agility</h3><p>Sport-specific work built around acceleration, deceleration, agility, and repeatable mechanics.</p></div></article>
+            <article class="service-card"><div class="program-image sport-c" role="img" aria-label="Approved power development image"></div><div class="program-content"><h3>Power Development</h3><p>Training for force transfer, coordination, and explosive output in competitive environments.</p></div></article>
+            <article class="service-card"><div class="program-image service-online" role="img" aria-label="Approved online programming image"></div><div class="program-content"><h3>Online Programs</h3><p>General health personal training and dance strength &amp; conditioning subscriptions.</p></div></article>
+          </div>
+        </div>
+      </section>
 
-      <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="max-w-xl mx-auto">
-        <input type="hidden" name="form-name" value="contact">
+      <section id="personal-training" class="page" aria-labelledby="personal-title">
+        <div class="split">
+          <div class="copy-panel">
+            <p class="eyebrow">Personal Training</p>
+            <h2 id="personal-title">Individualized Personal Training</h2>
+            <p class="lead">Commit to your personal health and fitness goals with one-on-one training programs delivered through TrainHeroic. Programming is tailored specifically to your goals, physical restrictions, and current life stage.</p>
+            <p>Every plan includes custom-built programs, exercise video library, a personal dashboard, and direct coach messaging.</p>
+          </div>
+          <div class="image-grid-3">
+            <div class="image-card pt-a" role="img" aria-label="Approved kettlebell coaching image"></div>
+            <div class="image-card pt-b" role="img" aria-label="Approved flat bench press coaching image"></div>
+            <div class="image-card pt-c" role="img" aria-label="Approved high plank image"></div>
+          </div>
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label for="contact-name" class="block text-gray-300 mb-2 sr-only">Name</label>
-            <input required type="text" id="contact-name" name="name" placeholder="Your Name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+        <div class="section">
+          <p class="eyebrow">Personal Coaching</p>
+          <h2>Specific work for the body in front of us.</h2>
+          <div class="program-grid">
+            <article class="service-card"><div class="program-image service-personal" role="img" aria-label="Approved individualized coaching image"></div><div class="program-content"><h3>Personal Training</h3><p>Individualized coaching for health, movement quality, and strength.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Custom Programming</h3><p>Training built around your goals, equipment access, injury history, and current training age.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Exercise Library</h3><p>Clear video resources and descriptions so you understand the purpose and execution of each movement.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Coach Messaging</h3><p>Direct communication to keep your training aligned, responsive, and accountable.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="page" aria-labelledby="about-title">
+        <div class="about-grid">
+          <div class="headshot" role="img" aria-label="Lea-Janell Mitchell, Founder of Stage Ready Performance"></div>
+          <div class="about-copy">
+            <p class="eyebrow">Meet the Founder</p>
+            <h2 id="about-title">Lea-Janell Mitchell, MS, CSCS</h2>
+            <p>Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise. Her unique background allows her to bridge the gap between artistry and athleticism, creating programs that are both scientifically rigorous and deeply attuned to the demands of performance.</p>
+            <h3>Education &amp; Certifications</h3>
+            <ul>
+              <li>Master of Science in Strength and Conditioning, with a thesis on ballet cross-training and landing mechanics.</li>
+              <li>BFA in Dance Performance and Ballet Pedagogy from The Hartt School.</li>
+              <li>Certified Strength and Conditioning Specialist (CSCS) through the NSCA.</li>
+              <li>Additional Certifications: NASM, USAW1, FMS.</li>
+            </ul>
           </div>
           <div>
-            <label for="contact-email" class="block text-gray-300 mb-2 sr-only">Email</label>
-            <input required type="email" id="contact-email" name="email" placeholder="Your Email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors">
+            <div class="about-support" role="img" aria-label="Approved SRP research notebook image"></div>
+            <div class="orbital" role="img" aria-label="Approved SRP orbital logo"></div>
           </div>
         </div>
+      </section>
 
-        <div class="mb-4">
-          <label for="contact-message" class="block text-gray-300 mb-2 sr-only">Message</label>
-          <textarea id="contact-message" name="message" rows="4" placeholder="Your Message" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 focus:outline-none focus:border-sky-500 transition-colors"></textarea>
+      <section id="pricing" class="page" aria-labelledby="pricing-title">
+        <div class="section">
+          <p class="eyebrow">Our Services &amp; Pricing</p>
+          <h2 id="pricing-title">Transparent pricing for specialized performance packages.</h2>
+          <div class="pricing-grid">
+            <article class="pricing-card"><h3>Corps Package</h3><div class="price">$900</div><ul><li>Clear objectives and goals for each level.</li><li>Musical theory progressions.</li><li>Developmental movement teaching strategies.</li><li>Three written lesson plans per level.</li><li>Complete glossary with exercise descriptions, meanings, and photos.</li></ul></article>
+            <article class="pricing-card"><h3>Soloist Package</h3><div class="price">$1000</div><ul><li>Includes all aspects of the Corps Package.</li><li>Studio-specific grading sheet for two semesters.</li><li>Sections for etiquette, technique, ensemble, and more.</li></ul></article>
+            <article class="pricing-card"><h3>Prima Package</h3><div class="price">$1400</div><ul><li>Includes all aspects of the Soloist Package.</li><li>Additional curriculum for pre-pointe and pointe classes.</li><li>Pointe shoe fitting, sewing, and shoe life/pricing guide.</li></ul></article>
+            <article class="pricing-card"><h3>Etoile Package</h3><div class="price">$1600</div><ul><li>Includes all package details above.</li><li>Three dance strength &amp; conditioning classes.</li><li>Teacher access to exercise videos, descriptions, and messaging center.</li></ul></article>
+          </div>
+          <div class="pricing-grid">
+            <article class="pricing-card"><h3>4-Week Strength</h3><div class="price">$300</div><p>2-3 days per week of focused strength training.</p></article>
+            <article class="pricing-card"><h3>4-Week Total Performance</h3><div class="price">$500</div><p>5-6 days per week of integrated strength and speed training.</p></article>
+            <article class="pricing-card"><h3>6-Week Strength</h3><div class="price">$400</div><p>2-3 days per week of focused strength training.</p></article>
+            <article class="pricing-card"><h3>6-Week Total Performance</h3><div class="price">$700</div><p>5-6 days per week of integrated strength and speed training.</p></article>
+          </div>
+          <p class="pricing-note"><strong>License:</strong> All curriculum packages are passcode protected and licensed for 1-year of use. <strong>Renewal:</strong> Annual 30% renewal fee. <strong>Upgrades:</strong> Studios can upgrade at any time with a 70% discount on the new package, plus price difference. Payments accepted through PayPal or TrainHeroic.</p>
+          <p class="pricing-note"><strong>Individual Personal Training:</strong> Packages Coming Soon. Please reach out via the contact form for inquiries.</p>
         </div>
+      </section>
 
-        <div data-netlify-recaptcha="true"></div>
-
-        <div class="text-center">
-          <button type="submit" class="cta-button bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg">Send Message</button>
+      <section id="contact" class="page" aria-labelledby="contact-title">
+        <div class="section">
+          <div class="form-wrap">
+            <div>
+              <p class="eyebrow">Get In Touch</p>
+              <h2 id="contact-title">Have a question or want to discuss a custom package?</h2>
+              <p class="lead">Fill out the form below and we'll follow up with next steps.</p>
+            </div>
+            <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/">
+              <input type="hidden" name="form-name" value="contact">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required></textarea>
+              <div data-netlify-recaptcha="true"></div>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+            </form>
+          </div>
         </div>
-      </form>
-    </section>
+      </section>
+    </main>
 
-  </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <img class="footer-logo" src="assets/assets/logos/SRP_Primary_Logo.png" alt="SRP">
+          <div class="brand-name">Stage Ready Performance</div>
+          <div class="brand-tag">Science • Meets • Artistry</div>
+        </div>
+        <div>
+          <p class="eyebrow">Follow SRP:</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Etsy">Etsy</a>
+            <a href="#" aria-label="Pinterest">Pinterest</a>
+            <a href="#" aria-label="TrainHeroic">TrainHeroic</a>
+          </div>
+        </div>
+        <div>
+          <img class="footer-submark" src="assets/assets/logos/SRP_Submark_Hex.png" alt="">
+          <p class="eyebrow">Ready to perform?</p>
+          <a class="btn" href="#contact">Work With SRP</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Stage Ready Performance</span>
+        <span>Privacy Policy · Terms of Service · Contact</span>
+      </div>
+    </footer>
+  </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navLinks = document.querySelectorAll('.nav-link');
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const contentSections = document.querySelectorAll('.content-section');
-      const mainContent = document.getElementById('main-content');
-      const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    (function () {
+      const routeIds = ['home', 'dance', 'sport', 'personal-training', 'about', 'pricing', 'contact'];
+      const pages = Array.from(document.querySelectorAll('main > .page'));
+      const navLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobilePanel = document.querySelector('.mobile-panel');
 
-      function switchPage(pageId) {
-        // Hide all sections
-        contentSections.forEach(section => {
-          section.classList.remove('active');
-        });
-
-        // Show the target section
-        const targetSection = document.getElementById(pageId);
-        if (targetSection) {
-          targetSection.classList.add('active');
-        }
-
-        // Update active link
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.dataset.page === pageId) {
-            link.classList.add('active');
-          }
-        });
-
-        // Close mobile menu
-        mobileMenu.classList.add('hidden');
-
-        // Scroll to top of main content area
-        mainContent.scrollIntoView({ behavior: 'smooth' });
+      function normalizeRoute(id) {
+        return routeIds.includes(id) ? id : 'home';
       }
 
-      // Handle nav link clicks
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const pageId = link.dataset.page;
-          switchPage(pageId);
-          history.pushState({ page: pageId }, '', `#${pageId}`);
+      function closeMenu() {
+        document.body.classList.remove('menu-open');
+        if (mobilePanel) mobilePanel.classList.remove('open');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function showPage(id, shouldReplace) {
+        const route = normalizeRoute(id);
+        const target = document.getElementById(route);
+
+        pages.forEach(function (section) {
+          section.classList.toggle('active-page', section === target);
+        });
+
+        navLinks.forEach(function (link) {
+          const href = link.getAttribute('href') || '';
+          const linkRoute = href.charAt(0) === '#' ? href.slice(1) : '';
+          link.classList.toggle('active', linkRoute === route);
+        });
+
+        if (window.location.hash !== '#' + route) {
+          const method = shouldReplace ? 'replaceState' : 'pushState';
+          history[method](null, '', '#' + route);
+        }
+
+        closeMenu();
+        window.scrollTo(0, 0);
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          const href = link.getAttribute('href') || '';
+          if (href.charAt(0) !== '#') return;
+
+          const id = href.slice(1);
+          if (!routeIds.includes(id)) return;
+
+          event.preventDefault();
+          showPage(id, false);
         });
       });
 
-      // Handle all smooth scroll links, including CTA buttons
-      smoothScrollLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          const pageId = this.dataset.page;
-
-          // If it's a page-switching link, let the navLink handler do the work
-          if (pageId) {
-            return;
-          }
-
-          // If it's an on-page anchor link
-          if (href && href.startsWith('#') && href.length > 1) {
-            e.preventDefault();
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
+      if (menuToggle && mobilePanel) {
+        menuToggle.addEventListener('click', function () {
+          const isOpen = mobilePanel.classList.toggle('open');
+          document.body.classList.toggle('menu-open', isOpen);
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
         });
+      }
+
+      window.addEventListener('hashchange', function () {
+        showPage(window.location.hash.slice(1), true);
       });
 
-      // Mobile menu toggle
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      window.addEventListener('popstate', function () {
+        showPage(window.location.hash.slice(1), true);
       });
 
-      // Handle initial page load based on URL hash
-      const initialPage = window.location.hash.substring(1) || 'home';
-      switchPage(initialPage);
-
-      // Handle back/forward browser buttons
-      window.addEventListener('popstate', (e) => {
-        const pageId = window.location.hash.substring(1) || 'home';
-        switchPage(pageId);
-      });
-    });
+      showPage(window.location.hash.slice(1), true);
+    })();
   </script>
 </body>
 </html>
