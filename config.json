@@ -1,0 +1,177 @@
+{
+  "branding": {
+    "name": "Stage Ready Performance",
+    "shortName": "SRP",
+    "tagline": "Science • Meets • Artistry",
+    "description": "Stage Ready Performance bridges science and artistry through specialized training programs for dancers, athletes, teams, studios, and individuals.",
+    "founder": "Lea-Janell Mitchell, MS, CSCS",
+    "founderTagline": "Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise.",
+    "email": "stagereadyperformance@gmail.com"
+  },
+  "navigation": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "Dance", "href": "dance.html" },
+    { "label": "Sport", "href": "sport.html" },
+    { "label": "Personal Training", "href": "personal-training.html" },
+    { "label": "About", "href": "about.html" },
+    { "label": "Pricing", "href": "pricing.html" },
+    { "label": "Contact Us", "href": "contact.html" }
+  ],
+  "hero": {
+    "eyebrow": "Science. Strength. Artistry.",
+    "title": "Unlock Your Peak",
+    "titleHighlight": "Performance",
+    "description": "At Stage Ready Performance, we empower artists and athletes to achieve their highest potential through specialized training programs designed for excellence.",
+    "image": "assets/hero-composite.jpg",
+    "buttons": [
+      { "label": "Book a Free Consultation", "href": "contact.html", "style": "primary" },
+      { "label": "Explore Programs", "href": "pricing.html", "style": "secondary" }
+    ]
+  },
+  "principles": [
+    {
+      "icon": "↗",
+      "title": "Progressive Overload",
+      "description": "Systematically increasing demands to help you break through plateaus."
+    },
+    {
+      "icon": "✦",
+      "title": "Science-Backed",
+      "description": "Rooted in scientific principles and tailored with performance data."
+    },
+    {
+      "icon": "⚡",
+      "title": "Total Development",
+      "description": "Speed, agility, strength, hypertrophy, and explosive power."
+    },
+    {
+      "icon": "∞",
+      "title": "Longevity",
+      "description": "Stability, mobility, and flexibility for a healthy performance career."
+    },
+    {
+      "icon": "◈",
+      "title": "Teams & Studios",
+      "description": "Services for professional teams, dance studios, and individuals."
+    },
+    {
+      "icon": "30",
+      "title": "Free Consultation",
+      "description": "A complimentary 30-minute session to discuss your goals."
+    }
+  ],
+  "services": [
+    {
+      "title": "Dance",
+      "description": "Structured curriculum and strength systems for dancers and studios.",
+      "image": "assets/dance-jete-smoke.jpg",
+      "href": "dance.html"
+    },
+    {
+      "title": "Sport",
+      "description": "Team training through Train Heroic for strength, speed, and durability.",
+      "image": "assets/sled-push.jpg",
+      "href": "sport.html"
+    },
+    {
+      "title": "Personal Training",
+      "description": "Individualized programming for health, strength, and movement quality.",
+      "image": "assets/kettlebell-coaching.jpg",
+      "href": "personal-training.html"
+    }
+  ],
+  "methodology": {
+    "eyebrow": "Our Methodology",
+    "title": "Science Meets Artistry",
+    "description": "Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.",
+    "images": [
+      { "src": "assets/linework-ballet.jpg", "alt": "Approved ballet linework" },
+      { "src": "assets/linework-sprinter.jpg", "alt": "Approved male sprinter linework" },
+      { "src": "assets/linework-broad-jump.jpg", "alt": "Approved broad jump linework" }
+    ]
+  },
+  "founder": {
+    "name": "Lea-Janell Mitchell, MS, CSCS",
+    "image": "assets/headshot.jpg",
+    "eyebrow": "Meet the Founder",
+    "description": "Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise. Her unique background allows her to bridge the gap between artistry and athleticism, creating programs that are both scientifically rigorous and deeply attuned to the demands of performance.",
+    "education": [
+      "Master of Science in Strength and Conditioning, with a thesis on ballet cross-training and landing mechanics.",
+      "BFA in Dance Performance and Ballet Pedagogy from The Hartt School.",
+      "Certified Strength and Conditioning Specialist (CSCS) through the NSCA.",
+      "Additional Certifications: NASM, USAW1, FMS."
+    ]
+  },
+  "dancePackages": [
+    {
+      "name": "Corps Package",
+      "price": "$900",
+      "features": [
+        "Clear objectives and goals for each level.",
+        "Musical theory progressions.",
+        "Developmental movement teaching strategies.",
+        "Three written lesson plans per level.",
+        "Complete glossary with exercise descriptions, meanings, and photos."
+      ]
+    },
+    {
+      "name": "Soloist Package",
+      "price": "$1000",
+      "features": [
+        "Includes all aspects of the Corps Package.",
+        "Studio-specific grading sheet for two semesters.",
+        "Sections for etiquette, technique, ensemble, and more."
+      ]
+    },
+    {
+      "name": "Prima Package",
+      "price": "$1400",
+      "features": [
+        "Includes all aspects of the Soloist Package.",
+        "Additional curriculum for pre-pointe and pointe classes.",
+        "Pointe shoe fitting, sewing, and shoe life/pricing guide."
+      ]
+    },
+    {
+      "name": "Etoile Package",
+      "price": "$1600",
+      "features": [
+        "Includes all package details above.",
+        "Three dance strength & conditioning classes.",
+        "Teacher access to exercise videos, descriptions, and messaging center."
+      ]
+    }
+  ],
+  "sportPackages": [
+    {
+      "name": "4-Week Strength",
+      "price": "$300",
+      "description": "2–3 days per week of focused strength training."
+    },
+    {
+      "name": "4-Week Total Performance",
+      "price": "$500",
+      "description": "5–6 days per week of integrated strength and speed training."
+    },
+    {
+      "name": "6-Week Strength",
+      "price": "$400",
+      "description": "2–3 days per week of focused strength training."
+    },
+    {
+      "name": "6-Week Total Performance",
+      "price": "$700",
+      "description": "5–6 days per week of integrated strength and speed training."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Elevate Your Performance?",
+    "buttonLabel": "CONTACT SRP",
+    "buttonHref": "contact.html"
+  },
+  "footer": {
+    "title": "SRP",
+    "tagline": "Stage Ready Performance",
+    "tagline2": "Evidence-based training bridging dance, sport, and lifelong performance."
+  }
+}
