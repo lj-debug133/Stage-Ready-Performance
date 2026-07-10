@@ -262,6 +262,7 @@
       background:
         linear-gradient(90deg, rgba(8, 8, 8, 0.66), rgba(8, 8, 8, 0.08)),
         url('assets/assets/hero/hero-vertical-banner.jpg') center / cover no-repeat;
+      background-color: var(--black);
       border-left: 1px solid var(--line);
     }
 
@@ -325,7 +326,9 @@
     }
     .image-card {
       background-position: center;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: var(--matte);
       border-left: 1px solid var(--line);
       min-height: 380px;
       position: relative;
@@ -371,7 +374,7 @@
     }
     .method-img {
       min-height: 260px;
-      background: #e7d7bd center / cover no-repeat;
+      background: #e7d7bd center / contain no-repeat;
       border: 1px solid rgba(91, 15, 26, 0.25);
     }
     .line-b { background-image: url('assets/assets/methodology/methodology-6b.png'); }
@@ -397,8 +400,10 @@
     .program-image,
     .service-image {
       min-height: 300px;
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
+      background-color: var(--matte);
       position: relative;
     }
     .program-content,
@@ -426,7 +431,8 @@
       border-bottom: 1px solid var(--line);
     }
     .headshot {
-      background: url('assets/assets/founder/headshot.jpg') center / cover no-repeat;
+      background: url('assets/assets/founder/headshot.jpg') center / contain no-repeat;
+      background-color: var(--matte);
       min-height: 540px;
       filter: grayscale(100%);
       border-right: 1px solid var(--line);
@@ -445,11 +451,13 @@
       font-size: 22px;
     }
     .about-support {
-      background: url('assets/assets/about/about-5a.jpg') center / cover no-repeat;
+      background: url('assets/assets/about/about-5a.jpg') center / contain no-repeat;
+      background-color: var(--matte);
       min-height: 540px;
     }
     .orbital {
-      background: url('assets/assets/about/about-5c.png') center / cover no-repeat;
+      background: url('assets/assets/about/about-5c.png') center / contain no-repeat;
+      background-color: var(--matte);
       min-height: 280px;
       border-top: 1px solid var(--line);
     }
@@ -524,7 +532,7 @@
     .footer-submark {
       width: 72px;
       height: 72px;
-      object-fit: cover;
+      object-fit: contain;
       border: 1px solid rgba(212, 175, 55, 0.28);
       margin-bottom: 14px;
     }
