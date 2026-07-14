@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stage Ready Performance bridges science and artistry through specialized training programs for dancers, athletes, teams, studios, and individuals.">
+  <title>Stage Ready Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #080808;
+      --matte: #0B0B0B;
+      --charcoal: #222222;
+      --maroon: #5B0F1A;
+      --maroon-dark: #31080E;
+      --gold: #D4AF37;
+      --bronze: #B67E4A;
+      --cream: #F4EFE6;
+      --muted: #C9C0B3;
+      --line: rgba(212, 175, 55, 0.34);
+      --soft-line: rgba(244, 239, 230, 0.12);
+      --text: #F4EFE6;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text);
+      background: var(--black);
+      line-height: 1.6;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+    ul { margin-top: 22px; color: var(--muted); line-height: 1.9; }
+
+    .site-shell {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(91, 15, 26, 0.28), transparent 34%),
+        radial-gradient(circle at 82% 18%, rgba(182, 126, 74, 0.12), transparent 30%),
+        var(--black);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 8, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: max-content;
+    }
+    .brand-logo {
+      width: 68px;
+      height: 50px;
+      object-fit: contain;
+      object-position: center;
+    }
+    .brand-mark {
+      font-family: 'Cinzel', Georgia, serif;
+      color: var(--gold);
+      font-size: 42px;
+      letter-spacing: -0.08em;
+      line-height: 1;
+    }
+    .brand-name {
+      font-family: 'Cinzel', Georgia, serif;
+      letter-spacing: 0.22em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    .brand-tag {
+      color: var(--bronze);
+      letter-spacing: 0.28em;
+      font-size: 9px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .nav-links a,
+    .mobile-panel a {
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active,
+    .mobile-panel a:hover,
+    .mobile-panel a.active {
+      color: var(--gold);
+    }
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--cream);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-direction: column;
+    }
+    .menu-toggle span {
+      width: 19px;
+      height: 2px;
+      background: currentColor;
+      display: block;
+    }
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 18px 24px 24px;
+      background: rgba(8, 8, 8, 0.98);
+    }
+    .mobile-panel a {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--soft-line);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 22px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream);
+      font-family: inherit;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+    }
+    .btn:hover {
+      background: rgba(212, 175, 55, 0.12);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--maroon);
+      border-color: var(--gold);
+    }
+    .btn-primary:hover {
+      background: #741525;
+    }
+
+    main > .page { display: none; }
+    main > .page.active-page { display: block; }
+
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 82px 24px;
+    }
+    .eyebrow {
+      color: var(--bronze);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', Georgia, serif;
+      font-weight: 500;
+      line-height: 1.08;
+      margin: 0;
+    }
+    h1 {
+      font-size: clamp(50px, 8vw, 105px);
+      color: #E8D8BB;
+    }
+    h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--cream);
+    }
+    h3 {
+      font-size: 28px;
+      color: var(--gold);
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 700px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .hero-copy {
+      padding: 96px 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 680px;
+    }
+    .hero-copy::before {
+      content: '';
+      position: absolute;
+      inset: 10% 8%;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
+    .hero-copy > * {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 34px;
+    }
+    .hero-art {
+      min-height: 680px;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.66), rgba(8, 8, 8, 0.08)),
+        url('assets/assets/hero/hero-vertical-banner.jpg') center / cover no-repeat;
+      background-color: var(--black);
+      border-left: 1px solid var(--line);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .principle {
+      padding: 34px 24px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .principle:last-child { border-right: 0; }
+    .principle-icon {
+      color: var(--gold);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .principle h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      color: var(--cream);
+    }
+    .principle p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .split.reverse { grid-template-columns: 1.25fr 0.75fr; }
+    .copy-panel {
+      padding: 72px 7vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 520px;
+    }
+    .copy-panel .lead + p {
+      margin-top: 22px;
+      color: var(--muted);
+    }
+    .image-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 500px;
+    }
+    .image-card,
+    .program-image,
+    .service-image,
+    .about-support,
+    .orbital {
+      background-color: #111;
+    }
+    .image-card {
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: var(--matte);
+      border-left: 1px solid var(--line);
+      min-height: 380px;
+      position: relative;
+    }
+    .image-card::after,
+    .program-card::after,
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.05));
+      pointer-events: none;
+    }
+
+    .dance-a { background-image: url('assets/assets/dance/dance-2a.jpg'); }
+    .dance-b { background-image: url('assets/assets/dance/dance-2b-pointe.jpg'); }
+    .dance-c { background-image: url('assets/assets/dance/dance-2c.jpg'); }
+    .sport-a { background-image: url('assets/assets/sport/sport-3a.jpg'); }
+    .sport-b { background-image: url('assets/assets/sport/sport-3b.jpg'); }
+    .sport-c { background-image: url('assets/assets/sport/sport-3c.jpg'); }
+    .pt-a { background-image: url('assets/assets/personal/personal-4a.jpg'); }
+    .pt-b { background-image: url('assets/assets/personal/personal-4b.jpg'); }
+    .pt-c { background-image: url('assets/assets/personal/personal-4c.jpg'); }
+
+    .cream-section {
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(91, 15, 26, 0.08)),
+        var(--cream);
+      color: #111;
+      border-bottom: 1px solid var(--line);
+    }
+    .cream-section h2,
+    .cream-section h3 {
+      color: #111;
+    }
+    .cream-section .eyebrow { color: #7A3A2C; }
+    .cream-section .lead { color: #444; }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+    }
+    .method-img {
+      min-height: 260px;
+      background: #e7d7bd center / contain no-repeat;
+      border: 1px solid rgba(91, 15, 26, 0.25);
+    }
+    .line-b { background-image: url('assets/assets/methodology/methodology-6b.png'); }
+    .line-a { background-image: url('assets/assets/methodology/methodology-6a.png'); }
+    .line-c { background-image: url('assets/assets/methodology/methodology-6c.png'); }
+    .line-d { background-image: url('assets/assets/methodology/methodology-6d.png'); }
+
+    .program-grid,
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .program-card,
+    .pricing-card,
+    .service-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .program-image,
+    .service-image {
+      min-height: 300px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: var(--matte);
+      position: relative;
+    }
+    .program-content,
+    .pricing-card {
+      padding: 26px;
+    }
+    .program-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .program-content p,
+    .pricing-card li,
+    .pricing-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .service-dance { background-image: url('assets/assets/dance/dance-2a.jpg'); }
+    .service-team { background-image: url('assets/assets/sport/sport-3b.jpg'); }
+    .service-online { background-image: url('assets/assets/hero/hero-approved.jpg'); }
+    .service-personal { background-image: url('assets/assets/personal/personal-4b.jpg'); }
+
+    .digital-product-showcase {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      margin-top: 42px;
+    }
+    .digital-product-visual {
+      min-height: 520px;
+      background:
+        linear-gradient(0deg, rgba(8, 8, 8, 0.35), rgba(8, 8, 8, 0.05)),
+        url('assets/assets/logos/SRP_Stacked_Logo_Black_Gold.jpg') center / contain no-repeat;
+      background-color: var(--matte);
+      border-right: 1px solid var(--line);
+    }
+    .digital-product-copy {
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .digital-product-copy h3 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+    .digital-product-copy p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+    .product-meta li {
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 10px 14px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 0.8fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .headshot {
+      background: url('assets/assets/founder/headshot.jpg') center / contain no-repeat;
+      background-color: var(--matte);
+      min-height: 540px;
+      filter: grayscale(100%);
+      border-right: 1px solid var(--line);
+    }
+    .about-copy {
+      padding: 64px 48px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .about-copy p {
+      margin-top: 24px;
+      color: var(--muted);
+    }
+    .about-copy h3 {
+      margin-top: 28px;
+      font-size: 22px;
+    }
+    .about-support {
+      background: url('assets/assets/about/about-5a.jpg') center / contain no-repeat;
+      background-color: var(--matte);
+      min-height: 540px;
+    }
+    .orbital {
+      background: url('assets/assets/about/about-5c.png') center / contain no-repeat;
+      background-color: var(--matte);
+      min-height: 280px;
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-card h3 { margin-bottom: 18px; }
+    .pricing-branch {
+      margin-top: 46px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .pricing-branch:first-of-type {
+      margin-top: 34px;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .pricing-branch h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .pricing-branch p {
+      color: var(--muted);
+      max-width: 780px;
+    }
+    .price {
+      font-family: 'Cinzel', Georgia, serif;
+      color: var(--gold);
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+    .pricing-card ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+    .pricing-note {
+      margin-top: 24px;
+      color: var(--muted);
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      background: #101010;
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 15px;
+    }
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    label {
+      color: var(--bronze);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: linear-gradient(90deg, var(--maroon-dark), var(--maroon));
+      border-top: 1px solid var(--line);
+      padding: 48px 24px 22px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 36px;
+    }
+    .footer-logo {
+      width: 92px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .footer-submark {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      margin-bottom: 14px;
+    }
+    .footer-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .footer-socials a {
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      padding: 9px 12px;
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 11px;
+      transition: color 0.22s ease, background 0.22s ease;
+    }
+    .footer-socials a:hover {
+      color: var(--black);
+      background: var(--gold);
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 36px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #d7c7b2;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .mobile-panel.open {
+        display: block;
+      }
+      .hero,
+      .split,
+      .split.reverse,
+      .about-grid,
+      .digital-product-showcase,
+      .form-wrap {
+        grid-template-columns: 1fr;
+      }
+      .principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .program-grid,
+      .pricing-grid,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+      .image-grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hero-art {
+        min-height: 420px;
+        border-left: 0;
+      }
+      .hero-copy {
+        min-height: auto;
+        padding: 72px 28px;
+      }
+      .copy-panel {
+        min-height: auto;
+        padding: 56px 28px;
+      }
+      .image-card {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+      .headshot,
+      .about-copy,
+      .digital-product-visual {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .digital-product-copy {
+        padding: 42px 28px;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding: 12px 18px;
+      }
+      .brand-logo {
+        width: 54px;
+        height: 42px;
+      }
+      .brand-name {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+      }
+      .brand-tag {
+        font-size: 8px;
+        letter-spacing: 0.16em;
+      }
+      h1 {
+        font-size: 44px;
+      }
+      h2 {
+        font-size: 34px;
+      }
+      .principles {
+        grid-template-columns: 1fr;
+      }
+      .principle {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .about-copy {
+        padding: 48px 28px;
+      }
+      .section {
+        padding: 64px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Stage Ready Performance Home">
+          <img class="brand-logo" src="assets/assets/logos/SRP_Slash_Monogram_Black_Gold.jpg" alt="SRP">
+          <div>
+            <div class="brand-name">Stage Ready Performance</div>
+            <div class="brand-tag">Science • Meets • Artistry</div>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#dance">Dance</a>
+          <a href="#sport">Sport</a>
+          <a href="#personal-training">Personal Training</a>
+          <a href="#about">About</a>
+          <a href="#digital-products">Digital Products</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact Us</a>
+        </nav>
+        <a class="btn btn-primary nav-cta" href="#contact">Book a Free Consultation</a>
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="mobile-panel" aria-label="Mobile navigation">
+        <a href="#home">Home</a>
+        <a href="#dance">Dance</a>
+        <a href="#sport">Sport</a>
+        <a href="#personal-training">Personal Training</a>
+        <a href="#about">About</a>
+        <a href="#digital-products">Digital Products</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="page active-page" aria-labelledby="hero-title">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Science. Strength. Artistry.</p>
+            <h1 id="hero-title">Unlock Your Peak <span>Performance</span></h1>
+            <p class="lead">At Stage Ready Performance, we empower artists and athletes to achieve their highest potential through specialized training programs designed for excellence.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Book a Free Consultation</a>
+              <a class="btn" href="#pricing">Explore Programs</a>
+            </div>
+          </div>
+          <div class="hero-art" role="img" aria-label="Approved SRP hero composite showing dance and athletic performance"></div>
+        </div>
+
+        <div class="principles" aria-label="SRP training principles">
+          <article class="principle"><div class="principle-icon">01</div><h3>Progressive Overload</h3><p>Systematically increasing demands to help you break through plateaus.</p></article>
+          <article class="principle"><div class="principle-icon">02</div><h3>Science-Backed</h3><p>Rooted in scientific principles and tailored with performance data.</p></article>
+          <article class="principle"><div class="principle-icon">03</div><h3>Total Development</h3><p>Speed, agility, strength, hypertrophy, and explosive power.</p></article>
+          <article class="principle"><div class="principle-icon">04</div><h3>Longevity</h3><p>Stability, mobility, and flexibility for a healthy performance career.</p></article>
+          <article class="principle"><div class="principle-icon">05</div><h3>Teams &amp; Studios</h3><p>Services for professional teams, dance studios, and individuals.</p></article>
+          <article class="principle"><div class="principle-icon">30</div><h3>Free Consultation</h3><p>A complimentary 30-minute session to discuss your goals.</p></article>
+        </div>
+
+        <div class="section">
+          <div class="form-wrap">
+            <div>
+              <p class="eyebrow">Claim Your Free Consultation</p>
+              <h2>Start with a conversation.</h2>
+              <p class="lead">Take the first step. Fill out the form, and we'll contact you to schedule your free 30-minute session to discuss your performance goals.</p>
+            </div>
+            <form name="consultation" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/">
+              <input type="hidden" name="form-name" value="consultation">
+              <label for="consult-name">Name</label>
+              <input id="consult-name" name="name" type="text" autocomplete="name" required>
+              <label for="consult-email">Email</label>
+              <input id="consult-email" name="email" type="email" autocomplete="email" required>
+              <label for="consult-goals">Your Goals</label>
+              <textarea id="consult-goals" name="goals" required></textarea>
+              <div data-netlify-recaptcha="true"></div>
+              <button class="btn btn-primary" type="submit">Inquire Now</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="dance" class="page" aria-labelledby="dance-title">
+        <div class="split">
+          <div class="copy-panel">
+            <p class="eyebrow">Dance Performance</p>
+            <h2 id="dance-title">Structured Ballet Curriculum for Studios</h2>
+            <p class="lead">A structured, progressive curriculum is the backbone of any successful dance studio. It ensures consistent, high-quality training for all students, fosters long-term development, and provides clear benchmarks for progress.</p>
+            <p>Our curriculum development service is designed to give you a comprehensive, ready-to-implement framework for excellence.</p>
+          </div>
+          <div class="image-grid-3">
+            <div class="image-card dance-a" role="img" aria-label="Approved dance editorial image"></div>
+            <div class="image-card dance-b" role="img" aria-label="Approved contemporary pointe shoe close-up"></div>
+            <div class="image-card dance-c" role="img" aria-label="Approved dance grand jete image"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="eyebrow">Our Process Includes</p>
+          <div class="program-grid">
+            <article class="program-card"><div class="program-content"><h3>1 Hour Initial Online Consultation</h3><p>We dive deep into your studio's unique philosophy, goals, and needs. We explore each level of your studio so your curriculum matches your unique needs.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Licensed Delivery</h3><p>You receive a passcode protected curriculum access with transparent renewal and upgrade policies.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Mid-Year Check in</h3><p>We include a 1 hour mid-year consultation to answer any and all questions you may have.</p></div></article>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="sport" class="page" aria-labelledby="sport-title">
+        <div class="split reverse">
+          <div class="image-grid-3">
+            <div class="image-card sport-a" role="img" aria-label="Approved sprint start image"></div>
+            <div class="image-card sport-b" role="img" aria-label="Approved strength training image"></div>
+            <div class="image-card sport-c" role="img" aria-label="Approved plyometric jump image"></div>
+          </div>
+          <div class="copy-panel">
+            <p class="eyebrow">Sport Performance</p>
+            <h2 id="sport-title">Team Training</h2>
+            <p class="lead">Elevate your team's performance with comprehensive and interactive training programs delivered through TrainHeroic. We provide everything you need to build a stronger, faster, and more resilient team.</p>
+            <ul>
+              <li>Custom programming tailored to your sport and season.</li>
+              <li>Exercise library with videos and descriptions.</li>
+              <li>Athlete dashboards with testing-based percentages.</li>
+              <li>Direct coach access through in-app messaging.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="eyebrow">Services</p>
+          <h2>Training for every stage of your journey.</h2>
+          <div class="program-grid">
+            <article class="service-card"><div class="program-image service-team" role="img" aria-label="Approved team training image"></div><div class="program-content"><h3>Team Training</h3><p>Online strength training for collegiate and high school teams through TrainHeroic.</p></div></article>
+            <article class="service-card"><div class="program-image sport-a" role="img" aria-label="Approved sprint performance image"></div><div class="program-content"><h3>Speed &amp; Agility</h3><p>Sport-specific work built around acceleration, deceleration, agility, and repeatable mechanics.</p></div></article>
+            <article class="service-card"><div class="program-image sport-c" role="img" aria-label="Approved power development image"></div><div class="program-content"><h3>Power Development</h3><p>Training for force transfer, coordination, and explosive output in competitive environments.</p></div></article>
+            <article class="service-card"><div class="program-image service-online" role="img" aria-label="Approved online programming image"></div><div class="program-content"><h3>Online Programs</h3><p>General health personal training and dance strength &amp; conditioning subscriptions.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="personal-training" class="page" aria-labelledby="personal-title">
+        <div class="split">
+          <div class="copy-panel">
+            <p class="eyebrow">Personal Training</p>
+            <h2 id="personal-title">Individualized Personal Training</h2>
+            <p class="lead">Commit to your personal health and fitness goals with one-on-one training programs delivered through TrainHeroic. Programming is tailored specifically to your goals, physical restrictions, and current life stage.</p>
+            <p>Every plan includes custom-built programs, exercise video library, a personal dashboard, and direct coach messaging.</p>
+          </div>
+          <div class="image-grid-3">
+            <div class="image-card pt-a" role="img" aria-label="Approved kettlebell coaching image"></div>
+            <div class="image-card pt-b" role="img" aria-label="Approved flat bench press coaching image"></div>
+            <div class="image-card pt-c" role="img" aria-label="Approved high plank image"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="eyebrow">Personal Coaching</p>
+          <h2>Specific work for the body in front of us.</h2>
+          <div class="program-grid">
+            <article class="service-card"><div class="program-image service-personal" role="img" aria-label="Approved individualized coaching image"></div><div class="program-content"><h3>Personal Training</h3><p>Individualized coaching for health, movement quality, and strength.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Custom Programming</h3><p>Training built around your goals, equipment access, injury history, and current training age.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Exercise Library</h3><p>Clear video resources and descriptions so you understand the purpose and execution of each movement.</p></div></article>
+            <article class="program-card"><div class="program-content"><h3>Coach Messaging</h3><p>Direct communication to keep your training aligned, responsive, and accountable.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="page" aria-labelledby="about-title">
+        <div class="about-grid">
+          <div class="headshot" role="img" aria-label="Lea-Janell Mitchell, Founder of Stage Ready Performance"></div>
+          <div class="about-copy">
+            <p class="eyebrow">Meet the Founder</p>
+            <h2 id="about-title">Lea-Janell Mitchell, MS, CSCS</h2>
+            <p>Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise. Her unique background allows her to bridge the gap between artistry and athleticism, creating programs that are both scientifically rigorous and deeply attuned to the demands of performance.</p>
+            <h3>Education &amp; Certifications</h3>
+            <ul>
+              <li>Master of Science in Strength and Conditioning, with a thesis on ballet cross-training and landing mechanics.</li>
+              <li>BFA in Dance Performance and Ballet Pedagogy from The Hartt School.</li>
+              <li>Certified Strength and Conditioning Specialist (CSCS) through the NSCA.</li>
+              <li>Additional Certifications: NASM, USAW1, FMS.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="about-support" role="img" aria-label="Approved SRP research notebook image"></div>
+            <div class="orbital" role="img" aria-label="Approved SRP orbital logo"></div>
+          </div>
+        </div>
+
+        <div class="cream-section">
+          <div class="section">
+            <div style="text-align:center">
+              <p class="eyebrow">Our Methodology</p>
+              <h2>Science Meets Artistry</h2>
+              <p class="lead" style="margin:18px auto 0">Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.</p>
+            </div>
+            <div class="method-grid">
+              <div class="method-img line-b" role="img" aria-label="Approved ballet linework"></div>
+              <div class="method-img line-a" role="img" aria-label="Approved male sprinter linework"></div>
+              <div class="method-img line-c" role="img" aria-label="Approved strength biomechanics linework"></div>
+              <div class="method-img line-d" role="img" aria-label="Approved change of direction biomechanics linework"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="digital-products" class="page" aria-labelledby="digital-products-title">
+        <div class="section">
+          <p class="eyebrow">Digital Products</p>
+          <h2 id="digital-products-title">Digital resources for training, teaching, and performance preparation.</h2>
+          <div class="digital-product-showcase">
+            <div class="digital-product-visual" role="img" aria-label="SRP digital product placeholder image"></div>
+            <div class="digital-product-copy">
+              <p class="eyebrow">Featured Product</p>
+              <h3>Digital Product Title</h3>
+              <ul class="product-meta">
+                <li>Price: Add Price</li>
+                <li>Digital Download</li>
+              </ul>
+              <p>Add the product description here. This space can describe what the customer receives, who the product is for, how it supports training or teaching, and what format is delivered after purchase.</p>
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Purchase on Etsy</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="page" aria-labelledby="pricing-title">
+        <div class="section">
+          <p class="eyebrow">Our Services &amp; Pricing</p>
+          <h2 id="pricing-title">Transparent pricing for specialized performance packages.</h2>
+          <div class="pricing-branch">
+            <p class="eyebrow">Dance</p>
+            <h3>Dance Curriculum Packages</h3>
+            <p>Structured ballet curriculum packages for studios, including implementation support and a 1-hour midyear consultation.</p>
+          </div>
+          <div class="pricing-grid">
+            <article class="pricing-card"><h3>Corps Package</h3><div class="price">$900</div><ul><li>Clear objectives and goals for each level.</li><li>Musical theory progressions.</li><li>Developmental movement teaching strategies.</li><li>Three written lesson plans per level.</li><li>Complete glossary with exercise descriptions, meanings, and photos.</li><li>Included 1-hour midyear consultation.</li></ul></article>
+            <article class="pricing-card"><h3>Soloist Package</h3><div class="price">$1000</div><ul><li>Includes all aspects of the Corps Package.</li><li>Studio-specific grading sheet for two semesters.</li><li>Sections for etiquette, technique, ensemble, and more.</li><li>Included 1-hour midyear consultation.</li></ul></article>
+            <article class="pricing-card"><h3>Prima Package</h3><div class="price">$1400</div><ul><li>Includes all aspects of the Soloist Package.</li><li>Additional curriculum for pre-pointe and pointe classes.</li><li>Pointe shoe fitting, sewing, and shoe life/pricing guide.</li><li>Included 1-hour midyear consultation.</li></ul></article>
+            <article class="pricing-card"><h3>Etoile Package</h3><div class="price">$1600</div><ul><li>Includes all package details above.</li><li>Three dance strength &amp; conditioning classes.</li><li>Teacher access to exercise videos, descriptions, and messaging center.</li><li>Included 1-hour midyear consultation.</li></ul></article>
+          </div>
+          <div class="pricing-branch">
+            <p class="eyebrow">Team Training</p>
+            <h3>Team Training Packages</h3>
+            <p>Strength and performance programming for teams delivered through TrainHeroic.</p>
+          </div>
+          <div class="pricing-grid">
+            <article class="pricing-card"><h3>4-Week Strength</h3><div class="price">$300</div><p>2-3 days per week of focused strength training.</p></article>
+            <article class="pricing-card"><h3>4-Week Total Performance</h3><div class="price">$500</div><p>5-6 days per week of integrated strength and speed training.</p></article>
+            <article class="pricing-card"><h3>6-Week Strength</h3><div class="price">$400</div><p>2-3 days per week of focused strength training.</p></article>
+            <article class="pricing-card"><h3>6-Week Total Performance</h3><div class="price">$700</div><p>5-6 days per week of integrated strength and speed training.</p></article>
+          </div>
+          <p class="pricing-note"><strong>License:</strong> All curriculum packages are passcode protected and licensed for 1-year of use. <strong>Renewal:</strong> Annual 30% renewal fee. <strong>Upgrades:</strong> Studios can upgrade at any time with a 70% discount on the new package, plus price difference. Payments accepted through PayPal or TrainHeroic.</p>
+          <p class="pricing-note"><strong>Individual Personal Training:</strong> Packages Coming Soon. Please reach out via the contact form for inquiries.</p>
+        </div>
+      </section>
+
+      <section id="contact" class="page" aria-labelledby="contact-title">
+        <div class="section">
+          <div class="form-wrap">
+            <div>
+              <p class="eyebrow">Get In Touch</p>
+              <h2 id="contact-title">Have a question or want to discuss a custom package?</h2>
+              <p class="lead">Fill out the form below and we'll follow up with next steps.</p>
+            </div>
+            <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/">
+              <input type="hidden" name="form-name" value="contact">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required></textarea>
+              <div data-netlify-recaptcha="true"></div>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <img class="footer-logo" src="assets/assets/logos/SRP_Slash_Monogram_Black_Gold.jpg" alt="SRP">
+          <div class="brand-name">Stage Ready Performance</div>
+          <div class="brand-tag">Science • Meets • Artistry</div>
+        </div>
+        <div>
+          <p class="eyebrow">Follow SRP:</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Etsy">Etsy</a>
+            <a href="#" aria-label="Pinterest">Pinterest</a>
+            <a href="#" aria-label="TrainHeroic">TrainHeroic</a>
+          </div>
+        </div>
+        <div>
+          <img class="footer-submark" src="assets/assets/logos/SRP_Circle_Badge_Black_Gold.jpg" alt="">
+          <p class="eyebrow">Ready to perform?</p>
+          <a class="btn" href="#contact">Work With SRP</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Stage Ready Performance</span>
+        <span>Privacy Policy · Terms of Service · Contact</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const routeIds = ['home', 'dance', 'sport', 'personal-training', 'about', 'digital-products', 'pricing', 'contact'];
+      const pages = Array.from(document.querySelectorAll('main > .page'));
+      const navLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobilePanel = document.querySelector('.mobile-panel');
+
+      function normalizeRoute(id) {
+        return routeIds.includes(id) ? id : 'home';
+      }
+
+      function closeMenu() {
+        document.body.classList.remove('menu-open');
+        if (mobilePanel) mobilePanel.classList.remove('open');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function showPage(id, shouldReplace) {
+        const route = normalizeRoute(id);
+        const target = document.getElementById(route);
+
+        pages.forEach(function (section) {
+          section.classList.toggle('active-page', section === target);
+        });
+
+        navLinks.forEach(function (link) {
+          const href = link.getAttribute('href') || '';
+          const linkRoute = href.charAt(0) === '#' ? href.slice(1) : '';
+          link.classList.toggle('active', linkRoute === route);
+        });
+
+        if (window.location.hash !== '#' + route) {
+          const method = shouldReplace ? 'replaceState' : 'pushState';
+          history[method](null, '', '#' + route);
+        }
+
+        closeMenu();
+        window.scrollTo(0, 0);
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          const href = link.getAttribute('href') || '';
+          if (href.charAt(0) !== '#') return;
+
+          const id = href.slice(1);
+          if (!routeIds.includes(id)) return;
+
+          event.preventDefault();
+          showPage(id, false);
+        });
+      });
+
+      if (menuToggle && mobilePanel) {
+        menuToggle.addEventListener('click', function () {
+          const isOpen = mobilePanel.classList.toggle('open');
+          document.body.classList.toggle('menu-open', isOpen);
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      window.addEventListener('hashchange', function () {
+        showPage(window.location.hash.slice(1), true);
+      });
+
+      window.addEventListener('popstate', function () {
+        showPage(window.location.hash.slice(1), true);
+      });
+
+      showPage(window.location.hash.slice(1), true);
+    })();
+  </script>
+</body>
+</html>
