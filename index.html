@@ -425,6 +425,52 @@
     .service-online { background-image: url('assets/assets/hero/hero-approved.jpg'); }
     .service-personal { background-image: url('assets/assets/personal/personal-4b.jpg'); }
 
+    .digital-product-showcase {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      margin-top: 42px;
+    }
+    .digital-product-visual {
+      min-height: 520px;
+      background:
+        linear-gradient(0deg, rgba(8, 8, 8, 0.35), rgba(8, 8, 8, 0.05)),
+        url('assets/assets/logos/SRP_Stacked_Logo_Black_Gold.jpg') center / contain no-repeat;
+      background-color: var(--matte);
+      border-right: 1px solid var(--line);
+    }
+    .digital-product-copy {
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .digital-product-copy h3 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+    .digital-product-copy p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .product-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+    .product-meta li {
+      border: 1px solid var(--line);
+      color: var(--cream);
+      padding: 10px 14px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
     .about-grid {
       display: grid;
       grid-template-columns: 0.7fr 0.8fr 1fr;
@@ -582,6 +628,7 @@
       .split,
       .split.reverse,
       .about-grid,
+      .digital-product-showcase,
       .form-wrap {
         grid-template-columns: 1fr;
       }
@@ -613,9 +660,13 @@
         border-top: 1px solid var(--line);
       }
       .headshot,
-      .about-copy {
+      .about-copy,
+      .digital-product-visual {
         border-right: 0;
         border-bottom: 1px solid var(--line);
+      }
+      .digital-product-copy {
+        padding: 42px 28px;
       }
       .footer-inner {
         grid-template-columns: 1fr;
@@ -680,6 +731,7 @@
           <a href="#sport">Sport</a>
           <a href="#personal-training">Personal Training</a>
           <a href="#about">About</a>
+          <a href="#digital-products">Digital Products</a>
           <a href="#pricing">Pricing</a>
           <a href="#contact">Contact Us</a>
         </nav>
@@ -696,6 +748,7 @@
         <a href="#sport">Sport</a>
         <a href="#personal-training">Personal Training</a>
         <a href="#about">About</a>
+        <a href="#digital-products">Digital Products</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact Us</a>
       </nav>
@@ -772,21 +825,6 @@
           </div>
         </div>
 
-        <div class="cream-section">
-          <div class="section">
-            <div style="text-align:center">
-              <p class="eyebrow">Our Methodology</p>
-              <h2>Science Meets Artistry</h2>
-              <p class="lead" style="margin:18px auto 0">Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.</p>
-            </div>
-            <div class="method-grid">
-              <div class="method-img line-b" role="img" aria-label="Approved ballet linework"></div>
-              <div class="method-img line-a" role="img" aria-label="Approved male sprinter linework"></div>
-              <div class="method-img line-c" role="img" aria-label="Approved strength biomechanics linework"></div>
-              <div class="method-img line-d" role="img" aria-label="Approved change of direction biomechanics linework"></div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section id="sport" class="page" aria-labelledby="sport-title">
@@ -868,6 +906,42 @@
             <div class="orbital" role="img" aria-label="Approved SRP orbital logo"></div>
           </div>
         </div>
+
+        <div class="cream-section">
+          <div class="section">
+            <div style="text-align:center">
+              <p class="eyebrow">Our Methodology</p>
+              <h2>Science Meets Artistry</h2>
+              <p class="lead" style="margin:18px auto 0">Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.</p>
+            </div>
+            <div class="method-grid">
+              <div class="method-img line-b" role="img" aria-label="Approved ballet linework"></div>
+              <div class="method-img line-a" role="img" aria-label="Approved male sprinter linework"></div>
+              <div class="method-img line-c" role="img" aria-label="Approved strength biomechanics linework"></div>
+              <div class="method-img line-d" role="img" aria-label="Approved change of direction biomechanics linework"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="digital-products" class="page" aria-labelledby="digital-products-title">
+        <div class="section">
+          <p class="eyebrow">Digital Products</p>
+          <h2 id="digital-products-title">Digital resources for training, teaching, and performance preparation.</h2>
+          <div class="digital-product-showcase">
+            <div class="digital-product-visual" role="img" aria-label="SRP digital product placeholder image"></div>
+            <div class="digital-product-copy">
+              <p class="eyebrow">Featured Product</p>
+              <h3>Digital Product Title</h3>
+              <ul class="product-meta">
+                <li>Price: Add Price</li>
+                <li>Digital Download</li>
+              </ul>
+              <p>Add the product description here. This space can describe what the customer receives, who the product is for, how it supports training or teaching, and what format is delivered after purchase.</p>
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Purchase on Etsy</a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="pricing" class="page" aria-labelledby="pricing-title">
@@ -926,7 +1000,6 @@
           <p class="eyebrow">Follow SRP:</p>
           <div class="footer-socials">
             <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="Facebook">Facebook</a>
             <a href="#" aria-label="Etsy">Etsy</a>
             <a href="#" aria-label="Pinterest">Pinterest</a>
             <a href="#" aria-label="TrainHeroic">TrainHeroic</a>
@@ -947,7 +1020,7 @@
 
   <script>
     (function () {
-      const routeIds = ['home', 'dance', 'sport', 'personal-training', 'about', 'pricing', 'contact'];
+      const routeIds = ['home', 'dance', 'sport', 'personal-training', 'about', 'digital-products', 'pricing', 'contact'];
       const pages = Array.from(document.querySelectorAll('main > .page'));
       const navLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
       const menuToggle = document.querySelector('.menu-toggle');
