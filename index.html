@@ -425,34 +425,82 @@
     .service-online { background-image: url('assets/assets/hero/hero-approved.jpg'); }
     .service-personal { background-image: url('assets/assets/personal/personal-4b.jpg'); }
 
-    .digital-product-showcase {
+    .digital-products-intro {
+      max-width: 820px;
+    }
+    .digital-products-intro .lead {
+      margin-top: 18px;
+    }
+    .digital-products-intro p:not(.eyebrow):not(.lead) {
+      color: var(--muted);
+      margin-top: 18px;
+      max-width: 780px;
+    }
+    .digital-products-flow {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.03);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
       margin-top: 42px;
     }
-    .digital-product-visual {
-      min-height: 520px;
-      background:
-        linear-gradient(0deg, rgba(8, 8, 8, 0.35), rgba(8, 8, 8, 0.05)),
-        url('assets/assets/logos/SRP_Stacked_Logo_Black_Gold.jpg') center / contain no-repeat;
-      background-color: var(--matte);
-      border-right: 1px solid var(--line);
-    }
-    .digital-product-copy {
-      padding: 56px;
+    .digital-product-card {
+      min-height: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+    }
+    .digital-product-card.featured {
+      background: rgba(91, 15, 26, 0.22);
+    }
+    .digital-product-card.coming-soon {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .digital-product-visual {
+      min-height: 220px;
+      background:
+        linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)),
+        url('assets/assets/logos/SRP_Stacked_Logo_Black_Gold.jpg') center / contain no-repeat;
+      background-color: var(--matte);
+      border-bottom: 1px solid var(--line);
+    }
+    .digital-product-copy {
+      padding: 28px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
     }
     .digital-product-copy h3 {
-      font-size: 30px;
-      margin-bottom: 16px;
+      font-size: 27px;
+      margin-bottom: 12px;
     }
     .digital-product-copy p {
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+    }
+    .product-subtitle {
+      color: var(--bronze);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .product-features {
+      margin: 0 0 24px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .digital-product-copy .btn {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+    .btn-disabled,
+    .btn-disabled:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      cursor: default;
+      transform: none;
     }
     .product-meta {
       display: flex;
@@ -469,12 +517,13 @@
       font-size: 12px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-    }.product-meta li.product-status {
-  border-color: var(--gold);
-  background: rgba(91, 15, 26, 0.72);
-  color: var(--gold);
-  font-weight: 700;
-}
+    }
+    .product-meta li.product-status {
+      border-color: var(--gold);
+      background: rgba(91, 15, 26, 0.72);
+      color: var(--gold);
+      font-weight: 700;
+    }
 
     .about-grid {
       display: grid;
@@ -651,7 +700,7 @@
       .split,
       .split.reverse,
       .about-grid,
-      .digital-product-showcase,
+      .digital-products-flow,
       .form-wrap {
         grid-template-columns: 1fr;
       }
@@ -948,19 +997,61 @@
 
       <section id="digital-products" class="page" aria-labelledby="digital-products-title">
         <div class="section">
-          <p class="eyebrow">Digital Products</p>
-          <h2 id="digital-products-title">Digital resources for training, teaching, and performance preparation.</h2>
-          <div class="digital-product-showcase">
-            <div class="digital-product-visual" role="img" aria-label="SRP digital product placeholder image"></div>
-            <div class="digital-product-copy">
-              <p class="eyebrow">Featured Product</p>
-              <h3>SRP Pointe Ready™ Assessment</h3>
-<ul class="product-meta">
-  <li class="product-status">Coming Soon</li>
-  <li>Digital Download</li>
-</ul>
-<p><strong>Take the guesswork out of pointe readiness.</strong> SRP Pointe Ready™ is an evidence-informed assessment designed to help dance educators evaluate the strength, mobility, alignment, balance, and ballet-specific control needed before beginning pointe training. Familiar dance-teacher language is paired with sport-science insight, giving instructors an objective framework to support their professional judgment.</p>
-            </div>
+          <div class="digital-products-intro">
+            <p class="eyebrow">Digital Products</p>
+            <h2 id="digital-products-title">Practical resources built for the studio, the dancer, and the people supporting them.</h2>
+            <p class="lead">Stage Ready Performance combines ballet experience with strength &amp; conditioning and sport-science principles to create resources that are clear, usable, and designed for real-world training.</p>
+            <p>Start with a free resource, go deeper with an SRP educational guide, or follow the development of our complete Pointe Ready system.</p>
+          </div>
+
+          <div class="digital-products-flow">
+            <article class="digital-product-card">
+              <div class="digital-product-visual" role="img" aria-label="SRP Pointe Shoe Quick Guide"></div>
+              <div class="digital-product-copy">
+                <p class="eyebrow">Free Educational Guide</p>
+                <h3>SRP Pointe Shoe Quick Guide</h3>
+                <p class="product-subtitle">Fit &bull; Prep &bull; Care &bull; Replacement</p>
+                <p>A concise pointe shoe resource for dancers, parents, and teachers covering what to look for during a fitting, how to prepare and care for a new pair, and how to recognize when a pointe shoe may need to be replaced.</p>
+                <p>A properly fitted pointe shoe is only one part of preparing for pointe. Learn the equipment first, then understand the dancer.</p>
+                <a class="btn btn-primary" href="assets/downloads/SRP-Pointe-Shoe-Quick-Guide.pdf" target="_blank" rel="noopener">Download the Free Guide</a>
+              </div>
+            </article>
+
+            <article class="digital-product-card featured">
+              <div class="digital-product-visual" role="img" aria-label="SRP Pointe Shoe Companion"></div>
+              <div class="digital-product-copy">
+                <p class="eyebrow">Digital Educational Guide</p>
+                <h3>SRP Pointe Shoe Companion</h3>
+                <p class="product-subtitle">Fit &bull; Anatomy &bull; Prep &bull; Care &bull; Troubleshooting</p>
+                <p>Go beyond the basics with a practical reference for dancers, parents, and teachers.</p>
+                <p>The SRP Pointe Shoe Companion expands on shoe anatomy, professional fitting, ribbons and elastics, controlled break-in, care and drying, identifying a dead shoe, troubleshooting common fit concerns, and preparing for the next fitting.</p>
+                <p><strong>Understand the shoe. Track what changes. Know what to ask your teacher or fitter.</strong></p>
+                <ul class="product-features">
+                  <li>Pointe shoe anatomy and fit</li>
+                  <li>Fitting appointment guidance</li>
+                  <li>Breaking-in and care</li>
+                  <li>Dead vs. broken-in shoes</li>
+                  <li>Troubleshooting guide</li>
+                  <li>Printable Pointe Shoe Life Tracker</li>
+                  <li>Next-fitting checklist</li>
+                </ul>
+                <a class="btn btn-primary" href="https://www.etsy.com/shop/SRPerform?ref=dashboard-header" target="_blank" rel="noopener">Get the Pointe Shoe Companion</a>
+              </div>
+            </article>
+
+            <article class="digital-product-card coming-soon">
+              <div class="digital-product-visual" role="img" aria-label="SRP Pointe Ready"></div>
+              <div class="digital-product-copy">
+                <p class="eyebrow">Premium System</p>
+                <h3>SRP Pointe Ready™</h3>
+                <ul class="product-meta">
+                  <li class="product-status">Coming Soon</li>
+                </ul>
+                <p>A teacher-administered, evidence-informed pointe readiness system designed to help ballet teachers evaluate more than age or technique alone.</p>
+                <p>The full assessment will organize observations across training history, structural readiness and alignment, mobility and foot/ankle control, balance and movement control, and functional ballet readiness.</p>
+                <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1031,8 +1122,8 @@
           <p class="eyebrow">Follow SRP:</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/stage_ready_performance/" aria-label="Instagram" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.etsy.com/shop/SRPerform?ref=dashboard-header" aria-label="Etsy" target="_blank" rel="noopener">Etsy</a>
-<a href="https://www.pinterest.com/stagereadyperformance/" aria-label="Pinterest" target="_blank" rel="noopener">Pinterest</a>
+            <a href="https://www.etsy.com/shop/SRPerform?ref=dashboard-header" aria-label="Etsy" target="_blank" rel="noopener">Etsy</a>
+            <a href="https://www.pinterest.com/stagereadyperformance/" aria-label="Pinterest" target="_blank" rel="noopener">Pinterest</a>
             <a href="#" aria-label="TrainHeroic">TrainHeroic</a>
           </div>
         </div>
