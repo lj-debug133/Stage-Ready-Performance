@@ -524,6 +524,35 @@
       color: var(--gold);
       font-weight: 700;
     }
+    .waitlist-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .waitlist-form .hidden-field {
+      display: none;
+    }
+    .waitlist-form textarea {
+      min-height: 110px;
+    }
+    .waitlist-form .checkbox-label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 10px;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .waitlist-form .checkbox-label input {
+      width: auto;
+      margin-top: 3px;
+    }
+    .waitlist-form .btn {
+      margin-top: 4px;
+    }
 
     .about-grid {
       display: grid;
@@ -1049,7 +1078,35 @@
                 </ul>
                 <p>A teacher-administered, evidence-informed pointe readiness system designed to help ballet teachers evaluate more than age or technique alone.</p>
                 <p>The full assessment will organize observations across training history, structural readiness and alignment, mobility and foot/ankle control, balance and movement control, and functional ballet readiness.</p>
-                <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+                <p>Studio owners and ballet teachers can join the launch waitlist at StageReadyPerformance.com.</p>
+                <form class="waitlist-form" name="pointe-ready-waitlist" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="/">
+                  <input type="hidden" name="form-name" value="pointe-ready-waitlist">
+                  <p class="hidden-field">
+                    <label>Do not fill this out: <input name="bot-field"></label>
+                  </p>
+                  <label for="waitlist-name">Name</label>
+                  <input id="waitlist-name" type="text" name="name" autocomplete="name" required>
+                  <label for="waitlist-email">Email</label>
+                  <input id="waitlist-email" type="email" name="email" autocomplete="email" required>
+                  <label for="waitlist-studio">Studio / Organization</label>
+                  <input id="waitlist-studio" type="text" name="studio" autocomplete="organization" required>
+                  <label for="waitlist-role">Role</label>
+                  <select id="waitlist-role" name="role" required>
+                    <option value="">Select one</option>
+                    <option value="Studio Owner">Studio Owner</option>
+                    <option value="Ballet Teacher">Ballet Teacher</option>
+                    <option value="Dance Educator">Dance Educator</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <label for="waitlist-message">What would you like SRP Pointe Ready to help with?</label>
+                  <textarea id="waitlist-message" name="message"></textarea>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="consent" value="yes" required>
+                    <span>I agree to be contacted by Stage Ready Performance about the SRP Pointe Ready launch.</span>
+                  </label>
+                  <div data-netlify-recaptcha="true"></div>
+                  <button class="btn btn-primary" type="submit">Join the Launch Waitlist</button>
+                </form>
               </div>
             </article>
           </div>
