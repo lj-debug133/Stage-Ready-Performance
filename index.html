@@ -568,6 +568,71 @@
       grid-template-columns: 0.7fr 0.8fr 1fr;
       border-bottom: 1px solid var(--line);
     }
+
+    /* About redesign preview (pending founder approval) */
+    .about-sub {
+      margin-top: 16px;
+      font-size: 19px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bronze);
+    }
+    .about-intro {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 52px;
+      margin-top: 52px;
+      align-items: start;
+    }
+    .about-photo {
+      min-height: 540px;
+      filter: none;
+      border: 1px solid var(--line);
+    }
+    .about-name { font-size: 25px; line-height: 1.35; }
+    .about-role {
+      margin-top: 12px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bronze);
+    }
+    .about-intro-copy p { margin-top: 24px; color: var(--muted); line-height: 1.8; }
+    .about-bio { padding-top: 4px; }
+    .about-bio p { max-width: 780px; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+    .creds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 30px; }
+    .about-creds h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      color: #5B0F1A;
+      border-bottom: 2px solid var(--bronze);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .cred-degree { font-weight: 600; color: #111; margin-top: 18px; }
+    .cred-school { color: #444; margin-top: 4px; }
+    .cred-list { list-style: none; }
+    .cred-list li { position: relative; color: #333; padding-left: 18px; margin-bottom: 12px; line-height: 1.55; }
+    .cred-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; background: var(--bronze); }
+    .about-closing { text-align: center; }
+    .closing-line { font-family: 'Cinzel', serif; font-size: 30px; line-height: 1.45; color: var(--cream); }
+    .about-services-link {
+      display: inline-block;
+      margin-top: 26px;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid var(--bronze);
+      padding-bottom: 4px;
+    }
+    @media (max-width: 860px) {
+      .about-intro, .creds-grid { grid-template-columns: 1fr; }
+      .about-photo { min-height: 440px; }
+      .closing-line { font-size: 24px; }
+    }
+
     .headshot {
       background: url('assets/assets/founder/headshot.jpg') center / contain no-repeat;
       background-color: var(--matte);
@@ -996,40 +1061,61 @@
       </section>
 
       <section id="about" class="page" aria-labelledby="about-title">
-        <div class="about-grid">
-          <div class="headshot" role="img" aria-label="Lea-Janell Savage, Founder of Stage Ready Performance"></div>
-          <div class="about-copy">
-            <p class="eyebrow">Meet the Founder</p>
-            <h2 id="about-title">Lea-Janell Savage, MS, CSCS</h2>
-            <p>Lea-Janell brings a rare and powerful combination of professional ballet experience and collegiate strength and conditioning expertise. Her unique background allows her to bridge the gap between artistry and athleticism, creating programs that are both scientifically rigorous and deeply attuned to the demands of performance.</p>
-            <h3>Education &amp; Certifications</h3>
-            <ul>
-              <li>Master of Science in Strength and Conditioning, with a thesis on ballet cross-training and landing mechanics.</li>
-              <li>BFA in Dance Performance and Ballet Pedagogy from The Hartt School.</li>
-              <li>Certified Strength and Conditioning Specialist (CSCS) through the NSCA.</li>
-              <li>Additional Certifications: NASM, USAW1, FMS.</li>
-            </ul>
-          </div>
-          <div>
-            <div class="about-support" role="img" aria-label="Approved SRP research notebook image"></div>
-            <div class="orbital" role="img" aria-label="Approved SRP orbital logo"></div>
+        <div class="section about-hero">
+          <p class="eyebrow">About Stage Ready Performance</p>
+          <h2 id="about-title">The Experience Behind the Performance</h2>
+          <p class="about-sub">Professional Dance. Collegiate Athletics. Applied Sport Science.</p>
+          <div class="about-intro">
+            <div class="headshot about-photo" role="img" aria-label="Lea-Janell Savage, Founder of Stage Ready Performance"></div>
+            <div class="about-intro-copy">
+              <h3 class="about-name">Lea-Janell Savage, MS, BFA, CSCS, NASM-CPT, PES, USAW-L1, FMS</h3>
+              <p class="about-role">Founder | Stage Ready Performance&trade;</p>
+              <p>Stage Ready Performance was founded on a belief that exceptional training requires more than exercise selection. It requires an understanding of movement, technical development, physical preparation, and the demands of performance.</p>
+            <p>Founder Lea-Janell Savage brings together an uncommon combination of professional ballet experience, formal dance pedagogy, collegiate strength and conditioning, movement science, and individualized performance coaching.</p>
+            </div>
           </div>
         </div>
 
+        <div class="section about-bio">
+          <p>A former professional ballerina, Savage performed with Ballet Hartford, Fort Wayne Ballet, and Ballet Theater Company, with experience spanning principal, soloist, and ensemble roles. Her career in dance also extends beyond the stage into more than a decade of instruction, curriculum development, pointe training, and educational leadership. She has served as Director of Ballet, taught at established ballet academies, and worked with dancers ranging from young beginners to advanced performers.</p>
+          <p>Her foundation in classical dance is supported by a Bachelor of Fine Arts in Dance Performance and Ballet Pedagogy from the University of Hartford's Hartt School. This specialized education included extensive coursework in dance kinesiology, technical progression, teaching methodology, and curriculum development.</p>
+          <p>Building upon that foundation, Savage earned a Master of Science in Strength and Conditioning from Springfield College. Her graduate research examined the benefits of ballet cross-training for high-level athletes, specifically in relation to landing mechanics, bringing together the two disciplines that would ultimately define Stage Ready Performance.</p>
+          <p>Her strength and conditioning career has included coaching and program leadership at Connecticut College, Johnson &amp; Wales University, the College of the Holy Cross, and Springfield College. Across these settings, she has developed sport-specific training programs, implemented athlete testing and performance-monitoring systems, collaborated with athletic training professionals, and coached athletes across a wide range of collegiate sports.</p>
+          <p>Her experience also includes undergraduate instruction in personal training, individualized fitness coaching, and work within a physical therapy and sports medicine setting. These roles strengthened her approach to movement assessment, progressive exercise programming, physical preparation, and adapting training to the individual.</p>
+          <p>Complementing her academic and professional background are nationally recognized credentials in strength and conditioning, personal training, performance enhancement, weightlifting, and functional movement assessment.</p>
+          <p>Stage Ready Performance represents the integration of these disciplines. Rather than separating technical education from physical development, SRP approaches performance through the relationship between skill, strength, movement quality, and purposeful progression.</p>
+          <p>From ballet curriculum and pointe-readiness education to athletic strength and conditioning and personalized training, SRP is built to provide informed, structured resources that translate specialized knowledge into practical application.</p>
+        </div>
+
         <div class="cream-section">
-          <div class="section">
-            <div style="text-align:center">
-              <p class="eyebrow">Our Methodology</p>
-              <h2>Science Meets Artistry</h2>
-              <p class="lead" style="margin:18px auto 0">Movement analyzed. Performance elevated. SRP combines sports science, biomechanics, movement quality, and intentional programming.</p>
-            </div>
-            <div class="method-grid">
-              <div class="method-img line-b" role="img" aria-label="Approved ballet linework"></div>
-              <div class="method-img line-a" role="img" aria-label="Approved male sprinter linework"></div>
-              <div class="method-img line-c" role="img" aria-label="Approved strength biomechanics linework"></div>
-              <div class="method-img line-d" role="img" aria-label="Approved change of direction biomechanics linework"></div>
+          <div class="section about-creds">
+            <p class="eyebrow">Education &amp; Credentials</p>
+            <h3 style="font-family:'Cinzel',serif;font-size:28px;color:#31080E">Education and Professional Credentials</h3>
+            <div class="creds-grid">
+              <div>
+                <h4>Education</h4>
+                <p class="cred-degree">Master of Science, Strength &amp; Conditioning</p>
+                <p class="cred-school">Springfield College</p>
+                <p class="cred-degree">Bachelor of Fine Arts, Dance Performance &amp; Ballet Pedagogy</p>
+                <p class="cred-school">University of Hartford, The Hartt School</p>
+              </div>
+              <div>
+                <h4>Professional Certifications</h4>
+                <ul class="cred-list">
+                  <li>NSCA Certified Strength and Conditioning Specialist (CSCS)</li>
+                  <li>NASM Certified Personal Trainer (CPT)</li>
+                  <li>NASM Performance Enhancement Specialist (PES)</li>
+                  <li>USA Weightlifting Level 1 (USAW-L1)</li>
+                  <li>Functional Movement Screen (FMS)</li>
+                </ul>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="section about-closing">
+          <p class="closing-line">Performance is developed with intention.<br>Training should be, too.</p>
+          <a class="about-services-link" href="#pricing">Explore SRP Services</a>
         </div>
       </section>
 
