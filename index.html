@@ -472,6 +472,24 @@
       background-color: var(--matte);
       border-bottom: 1px solid var(--line);
     }
+    .digital-product-visual.cover-quick {
+      background-image: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)), url('assets/assets/products/quick-guide-cover.jpg');
+    }
+    .digital-product-visual.cover-companion {
+      background-image: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)), url('assets/assets/products/companion-cover.jpg');
+    }
+    .digital-product-visual.cover-parents {
+      background-image: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)), url('assets/assets/products/parents-checklist-cover.jpg');
+    }
+    .digital-product-visual.cover-sewing {
+      background-image: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)), url('assets/assets/products/sewing-guide-cover.jpg');
+    }
+    .digital-product-visual.cover-tracker {
+      background-image: linear-gradient(0deg, rgba(8, 8, 8, 0.45), rgba(8, 8, 8, 0.1)), url('assets/assets/products/life-tracker-cover.jpg');
+    }
+    .pricing-branch + .digital-products-flow {
+      margin-top: 26px;
+    }
     .digital-product-copy {
       padding: 28px;
       display: flex;
@@ -1128,9 +1146,15 @@
             <p>Start with a free resource, go deeper with a full SRP guide or a focused mini guide, or follow the development of our complete Pointe Ready system.</p>
           </div>
 
+          <div class="pricing-branch">
+            <p class="eyebrow">Dance</p>
+            <h3>Dance &amp; Pointe Products</h3>
+            <p>Guides and trackers for dancers, parents, and teachers, from the first fitting to the next pair.</p>
+          </div>
+
           <div class="digital-products-flow">
             <article class="digital-product-card">
-              <div class="digital-product-visual" role="img" aria-label="SRP Pointe Shoe Quick Guide"></div>
+              <div class="digital-product-visual cover-quick" role="img" aria-label="SRP Pointe Shoe Quick Guide"></div>
               <div class="digital-product-copy">
                 <p class="eyebrow">Free Educational Guide</p>
                 <h3>SRP Pointe Shoe Quick Guide</h3>
@@ -1142,7 +1166,7 @@
             </article>
 
             <article class="digital-product-card featured">
-              <div class="digital-product-visual" role="img" aria-label="SRP Pointe Shoe Companion"></div>
+              <div class="digital-product-visual cover-companion" role="img" aria-label="SRP Pointe Shoe Companion"></div>
               <div class="digital-product-copy">
                 <p class="eyebrow">Digital Educational Guide</p>
                 <h3>SRP Pointe Shoe Companion</h3>
@@ -1164,7 +1188,7 @@
             </article>
 
             <article class="digital-product-card">
-              <div class="digital-product-visual" role="img" aria-label="First Pointe Shoes Checklist for Parents"></div>
+              <div class="digital-product-visual cover-parents" role="img" aria-label="First Pointe Shoes Checklist for Parents"></div>
               <div class="digital-product-copy">
                 <p class="eyebrow">Printable Mini Guide</p>
                 <h3>First Pointe Shoes Checklist for Parents</h3>
@@ -1176,7 +1200,7 @@
             </article>
 
             <article class="digital-product-card">
-              <div class="digital-product-visual" role="img" aria-label="How to Sew Pointe Shoes"></div>
+              <div class="digital-product-visual cover-sewing" role="img" aria-label="How to Sew Pointe Shoes"></div>
               <div class="digital-product-copy">
                 <p class="eyebrow">Printable Mini Guide</p>
                 <h3>How to Sew Pointe Shoes</h3>
@@ -1188,7 +1212,7 @@
             </article>
 
             <article class="digital-product-card">
-              <div class="digital-product-visual" role="img" aria-label="Pointe Shoe Life Tracker"></div>
+              <div class="digital-product-visual cover-tracker" role="img" aria-label="Pointe Shoe Life Tracker"></div>
               <div class="digital-product-copy">
                 <p class="eyebrow">Printable Mini Guide</p>
                 <h3>Pointe Shoe Life Tracker</h3>
@@ -1238,6 +1262,26 @@
                   <div data-netlify-recaptcha="true"></div>
                   <button class="btn btn-primary" type="submit">Join the Launch Waitlist</button>
                 </form>
+              </div>
+            </article>
+          </div>
+
+          <div class="pricing-branch">
+            <p class="eyebrow">Training</p>
+            <h3>Training Products</h3>
+            <p>Tools for the training side of performance: consistency, recovery, and the work between sessions.</p>
+          </div>
+
+          <div class="digital-products-flow">
+            <article class="digital-product-card coming-soon">
+              <div class="digital-product-visual" role="img" aria-label="SRP Fitness Tracker"></div>
+              <div class="digital-product-copy">
+                <p class="eyebrow">Digital Product</p>
+                <h3>SRP Fitness Tracker</h3>
+                <ul class="product-meta">
+                  <li class="product-status">In Development</li>
+                </ul>
+                <p>A habit and consistency tracker for training: daily check-ins across seven categories, weekly reviews, and one clear adherence score, in Google Sheets and Excel editions.</p>
               </div>
             </article>
           </div>
