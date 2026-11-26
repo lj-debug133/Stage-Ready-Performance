@@ -684,6 +684,25 @@
     }
 
     .pricing-card h3 { margin-bottom: 18px; }
+    .branch-picker {
+      margin-top: 34px;
+      text-align: center;
+    }
+    .branch-picker-label {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 21px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .branch-picker-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #branch-dance, #branch-training {
+      scroll-margin-top: 96px;
+    }
     .pricing-branch {
       margin-top: 46px;
       padding-top: 28px;
@@ -1146,7 +1165,15 @@
             <p>Start with a free resource, go deeper with a full SRP guide or a focused mini guide, or follow the development of our complete Pointe Ready system.</p>
           </div>
 
-          <div class="pricing-branch">
+                    <div class="branch-picker">
+            <p class="branch-picker-label">What branch are you interested in?</p>
+            <div class="branch-picker-buttons">
+              <button class="btn btn-primary" type="button" data-scroll-target="branch-dance">Dance</button>
+              <button class="btn btn-primary" type="button" data-scroll-target="branch-training">Training</button>
+            </div>
+          </div>
+
+          <div class="pricing-branch" id="branch-dance">
             <p class="eyebrow">Dance</p>
             <h3>Dance &amp; Pointe Products</h3>
             <p>Guides and trackers for dancers, parents, and teachers, from the first fitting to the next pair.</p>
@@ -1267,7 +1294,7 @@
             </article>
           </div>
 
-          <div class="pricing-branch">
+          <div class="pricing-branch" id="branch-training">
             <p class="eyebrow">Training</p>
             <h3>Training Products</h3>
             <p>Tools for the training side of performance: consistency, recovery, and the work between sessions.</p>
@@ -1445,6 +1472,16 @@
 
       showPage(window.location.hash.slice(1), true);
     })();
+  </script>
+  <script>
+    document.querySelectorAll('[data-scroll-target]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var target = document.getElementById(button.getAttribute('data-scroll-target'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
